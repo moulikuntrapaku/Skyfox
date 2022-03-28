@@ -1,9 +1,11 @@
 ARG REGISTRY_URI
-FROM ${REGISTRY_URI}/node:lts-alpine3.14 as build
+FROM ${REGISTRY_URI}/node:lts-alpine3.15.2 as build
 
 WORKDIR /app
 COPY package.json ./
 COPY yarn.lock ./
+RUN apk add --update nodejs npm
+RUN npm install -g yarn
 RUN yarn install
 COPY . ./
 RUN yarn
