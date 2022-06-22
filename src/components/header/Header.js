@@ -5,7 +5,8 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ProfileIcon from '@material-ui/icons/Person';
 import styles from "./styles/headerStyles";
 import PropTypes from "prop-types";
-import myProfile from "../myProfile/myProfile";
+import {Link} from "react-router-dom"
+import Profile from "../Profile/Profile";
 
 const Header = ({onLogout, isAuthenticated}) => {
     const classes = styles();
@@ -29,7 +30,7 @@ const Header = ({onLogout, isAuthenticated}) => {
                    <Typography className={classes.headerLogo} variant="body1">
                        Welcome, Admin!
                     </Typography> 
-                    <ProfileIcon/>
+                    <Link to="/Profile"><ProfileIcon/></Link>
                 </div>
             );
         }
