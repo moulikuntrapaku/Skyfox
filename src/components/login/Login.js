@@ -13,7 +13,7 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
     const {from} = location.state || {from: {pathname: "/"}};
     const {errorMessage, handleLogin} = useLogin(onLogin);
 
-    useEffect(() => {
+    useEffect(() => { //usage?
         if (isAuthenticated) {
             history.replace(from);
         }

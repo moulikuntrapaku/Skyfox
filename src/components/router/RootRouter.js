@@ -8,7 +8,9 @@ import {Error} from "../common";
 import {Login, ProtectedRoute} from "../login";
 import PropTypes from "prop-types";
 import moment from "moment";
+import Profile from "../Profile/Profile.js";
 import Signup from "../signup/Signup";
+
 
 const RootRouter = ({isAuthenticated, onLogin,onSignUp}) => {
     const todayDate = moment().format("YYYY-MM-DD");
@@ -28,6 +30,8 @@ const RootRouter = ({isAuthenticated, onLogin,onSignUp}) => {
                     () => <Error errorIcon={ErrorOutlineIcon} errorMessage={"Oops..Something went wrong"}/>
                 }
                 />
+                <Route exact path="/Profile" component={() => <Profile/>}/>
+                      
 
                 <Route component={
                     () => <Error errorIcon={BlockIcon} errorMessage={"Not Found"}/>
