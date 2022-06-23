@@ -1,12 +1,27 @@
+import { yellow } from "@material-ui/core/colors";
 import {makeStyles} from "@material-ui/core/styles";
 
-export default makeStyles
+export default makeStyles((theme) =>
     ({
-        profile: {
-           // padding: "20px 20px",
-            marginLeft:"15px",
-            backgroundColor:"black"
+         profileContainer: {
+             justifyContent: "left",
+            padding: "20px 40px"
+        },
+        changePasswordContainer:{
+            position:"center",
+            justifyContent: "center",
+            padding: "5px 5px",
+
+        },
+        changePasswordForm: {
+            flexDirection: "column",
+            justifyContent: "center",
+            padding: "5px 5px",
+        },
+        changePasswordErrorMessage: {
+            marginTop: "8px"
         }
-       
-    });
+    })
+);
+
 
