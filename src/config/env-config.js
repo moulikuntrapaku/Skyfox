@@ -41,7 +41,6 @@ export const serviceUrl = () => {
         console.log(process.env.REACT_APP_PUBLIC_HOSTNAME_AND_PORT);
         return process.env.REACT_APP_PUBLIC_HOSTNAME_AND_PORT || ENV_LOCAL;
     }
-
     console.log("process.env.REACT_APP_ENVIRONMENT is ");
     console.log(process.env.REACT_APP_ENVIRONMENT);
 
