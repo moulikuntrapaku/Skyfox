@@ -6,7 +6,6 @@ import ProfileIcon from '@material-ui/icons/Person';
 import styles from "./styles/headerStyles";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom"
-//import Profile from "../Profile/Profile";
 
 const Header = ({onLogout, isAuthenticated}) => {
     const classes = styles();
@@ -14,7 +13,7 @@ const Header = ({onLogout, isAuthenticated}) => {
     const logoutSection = () => {
         if (isAuthenticated) {
             return (
-                <div onClick={onLogout} className={classes.logoutLink}>
+                <div id ="logoutSection" onClick={onLogout} className={classes.logoutLink}>
                     <ExitToAppIcon/>
                     <Typography className={classes.headerLogo} variant="body1">
                         Logout
@@ -26,7 +25,7 @@ const Header = ({onLogout, isAuthenticated}) => {
     const profileSection = () => {
         if (isAuthenticated) {
             return (
-                <div>
+                <div id="profileSection">
                    <Typography className={classes.headerLogo} variant="body1">
                        Welcome, Admin!
                     </Typography> 

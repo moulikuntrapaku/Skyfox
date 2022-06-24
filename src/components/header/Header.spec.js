@@ -10,7 +10,7 @@ describe("Basic rendering", () => {
         const headerComponent = shallow(<Header isAuthenticated={false} onLogout={testOnLogout}/>);
 
         const typographyComponent = headerComponent.find(Typography);
-        const missingLogoutDivComponent = headerComponent.find("div");
+        const missingLogoutDivComponent = headerComponent.find("#logoutSection");
         expect(missingLogoutDivComponent.length).toBe(0);
         expect(typographyComponent.length).toBe(1);
         expect(typographyComponent.text()).toBe("SkyFox Cinema");
@@ -21,8 +21,8 @@ describe("Basic rendering", () => {
 
         const typographyComponents = headerComponent.find(Typography);
         const logoTypographyComponent = typographyComponents.at(0);
-        const logoutDivComponent = headerComponent.find("div");
-        const logoutTypographyComponent = typographyComponents.at(1);
+        const logoutDivComponent = headerComponent.find("#logoutSection");
+        const logoutTypographyComponent = typographyComponents.at(2);
         expect(logoutDivComponent.prop("onClick")).toBe(testOnLogout);
         expect(logoutTypographyComponent.text()).toBe("Logout");
         expect(logoTypographyComponent.length).toBe(1);

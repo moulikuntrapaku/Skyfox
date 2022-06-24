@@ -17,6 +17,7 @@ export default () => {
         logout();
         setIsAuthenticated(false);
     };
+   // const handlePasswordchange=async(username, oldPassword,newPassword){return userDetails;};
 
     return {
         isAuthenticated: isAuthenticated,
