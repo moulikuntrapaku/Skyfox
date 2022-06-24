@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {isLoggedIn, login, logout} from "../../../helpers/authService";
+import Signup from "../../signup/Signup";
 
 export default () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -13,6 +14,12 @@ export default () => {
         return userDetails;
     };
 
+    const handleSignUp=async(name,username,email,mobileNumber, password,confirmPassword)=>{
+        const customerDetails=await Signup(name,username,email,mobileNumber, password,confirmPassword);
+        setIsAuthenticated(true);
+        return customerDetails;
+    }
+
     const handleLogout = () => {
         logout();
         setIsAuthenticated(false);
@@ -22,6 +29,7 @@ export default () => {
     return {
         isAuthenticated: isAuthenticated,
         handleLogin: handleLogin,
-        handleLogout: handleLogout
+        handleLogout: handleLogout,
+        handleSignUp:handleSignUp
     };
 }

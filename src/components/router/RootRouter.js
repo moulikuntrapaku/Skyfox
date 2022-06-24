@@ -8,10 +8,14 @@ import {Error} from "../common";
 import {Login, ProtectedRoute} from "../login";
 import PropTypes from "prop-types";
 import moment from "moment";
+<<<<<<< HEAD
 import Profile from "../Profile/Profile.js";
 
+=======
+import Signup from "../signup/Signup";
+>>>>>>> 445fcdc ([Priya|Lasya] Initial Commit)
 
-const RootRouter = ({isAuthenticated, onLogin}) => {
+const RootRouter = ({isAuthenticated, onLogin,onSignUp}) => {
     const todayDate = moment().format("YYYY-MM-DD");
 
     return (
@@ -22,6 +26,8 @@ const RootRouter = ({isAuthenticated, onLogin}) => {
 
                 <Route exact path="/login"
                        component={(props) => <Login isAuthenticated={isAuthenticated} onLogin={onLogin} {...props}/>}/>
+                
+                <Route exact path="/signup" component={(props)=><Signup isAuthenticated={isAuthenticated} onSignUp={onSignUp} {...props}/>}/>
 
                 <Route exact path="/error" component={
                     () => <Error errorIcon={ErrorOutlineIcon} errorMessage={"Oops..Something went wrong"}/>
