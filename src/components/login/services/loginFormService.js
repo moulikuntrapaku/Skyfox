@@ -11,3 +11,7 @@ export const formSchema = object({
     password: string("Enter password")
         .required("Password is required")
 });
+
+export const isValidPassword=()=>{
+
+}

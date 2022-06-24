@@ -4,25 +4,33 @@ import {Form, Formik} from "formik";
 import {FormikTextField} from "../formik";
 import styles from "./styles/signupStyles";
 import PropTypes from "prop-types";
-import { formSchema ,initialValues} from './services/signupFormService';
+import { formSchema ,initialValues,isPasswordAndConfirmPasswordMatching,isValidMobileNumber,isValidPassword} from './services/signupFormService';
 import useSignUp from './hooks/useSignUp';
 
 
 
 const Signup=(location, history,isAuthenticated, onSignUp)=>{
     const classes = styles();
-    const [mobile, setmobile] = useState("");
-    const [isError, setIsError] = useState(false);
-    const [mobileErrorMessage,setErrorMessage]=useState("");
+    const [mobileNumber, setmobileNumber] = useState("");
+    const [password,setPassword]=useState("");
+    const [confirmPassword,setConfirmPassword]=useState("");
     const {from} = location.state || {from: {pathname: "/login"}};
     const {errorMessage, handleSignUp} = useSignUp(onSignUp);
-
+    const [passwordType, setPasswordType] = useState("password");
     
     useEffect(() => {
         if (isAuthenticated) {
             history.replace(from);
         }
     });
+    const togglePassword =()=>{
+        if(passwordType==="password")
+        {
+         setPasswordType("text")
+         return;
+        }
+        setPasswordType("password")
+      }
 
         return (
             <div className={classes.signUpContainer}>
@@ -55,37 +63,59 @@ const Signup=(location, history,isAuthenticated, onSignUp)=>{
                                         label="Email"
                                     />
                                       <FormikTextField
-                                        error={isError}
-                                        value={mobile}
+                                        required
+                                        value={mobileNumber}
                                         margin="dense"
                                         name="mobileNumber"
                                         label="Mobile Number"
                                         onChange={(e) => {
-                                            setmobile(e.target.value);
-                                            if (e.target.value.length !==10) {
-                                              setIsError(true);
-                                              setErrorMessage("Enter Valid Mobile Number");
-                                            }
-                                            else {setIsError(false);setErrorMessage();}
-                                            
-                                          }
-                                        }    
+                                            setmobileNumber(e.target.value); 
+                                          }}    
                                     />
-                                    <div>{mobileErrorMessage}</div>
+                                    {isValidMobileNumber(mobileNumber) && <div className={classes.errorMessage}>{isValidMobileNumber(mobileNumber)}</div>}
+
+
+                                    {/* <Input
+                                        type={values.showPassword ? "text" : "password"}
+                                        onChange={handlePasswordChange("password")}
+                                        value={values.password}
+                                        endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            >
+                                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                        }
+                                    /> */}
+                                    
+
                                     <FormikTextField
                                         required
-                                        type="password"
+                                        value={password}
                                         margin="dense"
                                         name="password"
                                         label="Password"
+                                        onChange={(e)=>{
+                                            setPassword(e.target.value);
+                                        }}   
                                     />
+                                      
+                                    {isValidPassword(password) && <p className={classes.errorMessage}>{isValidPassword(password)}</p>}
                                      <FormikTextField
                                         required
+                                        value={confirmPassword}
                                         type="password"
                                         margin="dense"
                                         name="confirmPassword"
                                         label="Confirm Password"
+                                        onChange={(e)=>{
+                                            setConfirmPassword(e.target.value);
+                                        }}
                                     /> 
+                                    {isPasswordAndConfirmPasswordMatching(password,confirmPassword) && <p className={classes.errorMessage}>{isPasswordAndConfirmPasswordMatching(password,confirmPassword)}</p>}
                                     {
                                     errorMessage()
                                     }

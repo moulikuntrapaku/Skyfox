@@ -1,4 +1,3 @@
-import { red } from "@material-ui/core/colors";
 import {makeStyles} from "@material-ui/core/styles";
 
 export default makeStyles((theme) =>
@@ -20,10 +19,11 @@ export default makeStyles((theme) =>
         
         },
         signUpErrorMessage: {
-            marginTop: "8px"
+            marginTop: "8px",
+            display:"inline"
         },
         errorMessage:{
-            textColor:"red"
+            color:"red"
         }
     })
 );
