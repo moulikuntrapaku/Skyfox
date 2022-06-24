@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> b7d63cf ([Priya|Lasya] Add. Password and mobile number validation added.)
 import {makeStyles} from "@material-ui/core/styles";
 
 export default makeStyles((theme) =>

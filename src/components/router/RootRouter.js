@@ -8,12 +8,8 @@ import {Error} from "../common";
 import {Login, ProtectedRoute} from "../login";
 import PropTypes from "prop-types";
 import moment from "moment";
-<<<<<<< HEAD
 import Profile from "../Profile/Profile.js";
-
-=======
-import Signup from "../signup/Signup";
->>>>>>> 445fcdc ([Priya|Lasya] Initial Commit)
+import Signup from "../signup/Signup.js"
 
 const RootRouter = ({isAuthenticated, onLogin,onSignUp}) => {
     const todayDate = moment().format("YYYY-MM-DD");

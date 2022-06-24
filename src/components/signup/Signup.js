@@ -16,22 +16,13 @@ const Signup=(location, history,isAuthenticated, onSignUp)=>{
     const [confirmPassword,setConfirmPassword]=useState("");
     const {from} = location.state || {from: {pathname: "/login"}};
     const {errorMessage, handleSignUp} = useSignUp(onSignUp);
-    const [passwordType, setPasswordType] = useState("password");
+  
     
     useEffect(() => {
         if (isAuthenticated) {
             history.replace(from);
         }
     });
-    const togglePassword =()=>{
-        if(passwordType==="password")
-        {
-         setPasswordType("text")
-         return;
-        }
-        setPasswordType("password")
-      }
-
         return (
             <div className={classes.signUpContainer}>
                 <Formik initialValues={initialValues}
@@ -73,25 +64,6 @@ const Signup=(location, history,isAuthenticated, onSignUp)=>{
                                           }}    
                                     />
                                     {isValidMobileNumber(mobileNumber) && <div className={classes.errorMessage}>{isValidMobileNumber(mobileNumber)}</div>}
-
-
-                                    {/* <Input
-                                        type={values.showPassword ? "text" : "password"}
-                                        onChange={handlePasswordChange("password")}
-                                        value={values.password}
-                                        endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            >
-                                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                        }
-                                    /> */}
-                                    
-
                                     <FormikTextField
                                         required
                                         value={password}

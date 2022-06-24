@@ -56,7 +56,7 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
                                 >
                                     Login
                                 </Button>
-                                <Link to='/signup'>Signup</Link>
+                                
                             </Form>
                         );
                     }
