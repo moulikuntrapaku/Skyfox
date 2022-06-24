@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {
-    Avatar,
     Backdrop,
     Button,
     CircularProgress,
@@ -11,7 +10,6 @@ import {
     Typography
 } from "@material-ui/core";
 import styles from "./styles/showsStyles"
-import LocalMoviesIcon from "@material-ui/icons/LocalMovies";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import useShows from "./hooks/useShows";
@@ -20,6 +18,7 @@ import {dateFromSearchString, nextDateLocation, previousDateLocation} from "./se
 import ShowsRevenue from "./ShowsRevenue";
 import useShowsRevenue from "./hooks/useShowsRevenue";
 import SeatSelectionDialog from "./SeatSelectionDialog";
+import PosterShowDialog from "./PosterShowDialog";
 
 export default ({location, history}) => {
     const classes = styles();
@@ -29,6 +28,9 @@ export default ({location, history}) => {
     const {shows, showsLoading} = useShows(showsDate);
     const {showsRevenue, updateShowsRevenue, showsRevenueLoading} = useShowsRevenue(showsDate);
     const [showSelectSeatDialog, setShowSelectSeatDialog] = useState(false);
+    const [showPoster, setShowPoster] = useState(false);
+    const [currentShow, setCurrentShow] = useState("");
+    const [currentShowPoster, setCurrentShowPoster] = useState("");
     const emptyShow = {
         "id": "",
         "date": "",
@@ -37,7 +39,8 @@ export default ({location, history}) => {
             "id": "",
             "name": "",
             "duration": "",
-            "plot": ""
+            "plot": "",
+            "url":""
         },
         "slot": {
             "id": "",
@@ -60,16 +63,18 @@ export default ({location, history}) => {
                 {
                     shows.map(show => (
                         <div key={show.id} className={classes.showContainer}>
-                            <ListItem style={{cursor: 'pointer'}} onClick={() => {
+                            <ListItem style={{cursor: 'pointer'}} >
+                                <ListItemAvatar onClick={()=>{
+                                    setCurrentShow(show.movie.name);
+                                    setCurrentShowPoster(show.movie.url);
+                                    setShowPoster(true);
+                                }} classes={{root: classes.localMoviesIcon}}>
+                                <img src={show.movie.url} alt="Poster" width="45px" height="45px"/>
+                                </ListItemAvatar>
+                                <ListItemText onClick={() => {
                                 setSelectedShow(show);
                                 setShowSelectSeatDialog(true);
-                            }}>
-                                <ListItemAvatar classes={{root: classes.localMoviesIcon}}>
-                                    <Avatar>
-                                        <LocalMoviesIcon/>
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText primary={show.movie.name} secondary={
+                            }} primary={show.movie.name} secondary={
                                     <>
                                         <Typography
                                             component="span"
@@ -93,6 +98,9 @@ export default ({location, history}) => {
             <SeatSelectionDialog selectedShow={selectedShow} updateShowsRevenue={updateShowsRevenue}
                                  open={showSelectSeatDialog}
                                  onClose={() => setShowSelectSeatDialog(false)}/>
+
+            <PosterShowDialog selectedShow={currentShow} posterUrl={currentShowPoster} open={showPoster} 
+                        onClose={() => setShowPoster(false)}/>
 
             <div className={classes.buttons}>
                 <Button
