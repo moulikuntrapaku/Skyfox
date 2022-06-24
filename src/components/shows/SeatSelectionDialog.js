@@ -1,15 +1,16 @@
-import {Avatar, Button, Dialog, Typography} from "@material-ui/core";
-import LocalMoviesIcon from "@material-ui/icons/LocalMovies";
+import { Button, Dialog, Typography} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import React, {useState} from "react";
 import styles from "./styles/seatSelectionDialogStyles"
 import CustomerDetailsDialog from "./CustomerDetailsDialog";
 import {INR_SYMBOL} from "../../Constants";
 import PropTypes from "prop-types";
+import PosterShowDialog from "./PosterShowDialog";
 
 const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) => {
     const [showCustomerDetails, setShowCustomerDetails] = useState(false);
     const [seats, setSeats] = useState("1");
+    const [showPoster, setShowPoster] = useState(false);
     const classes = styles();
 
     const handleClose = () => {
@@ -27,10 +28,10 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                         Select Seats
                     </Typography>
                     <div className={classes.dialogContent}>
-                        <div className={classes.moviePicture}>
-                            <Avatar>
-                                <LocalMoviesIcon/>
-                            </Avatar>
+                        <div style={{cursor: 'pointer'}} onClick={()=>{
+                            setShowPoster(true);
+                        }} className={classes.moviePicture}>
+                                <img src={selectedShow.movie.url} alt="poster" width="65px" height="85px"/>
                         </div>
                         <div className={classes.dialogMain}>
                             <Typography className={classes.movieMarquee} color="primary">
@@ -71,6 +72,9 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                 handleClose();
                 setShowCustomerDetails(false)
             }}/>
+            
+            <PosterShowDialog selectedShow={selectedShow.movie.name} posterUrl={selectedShow.movie.url} open={showPoster} 
+            onClose={() => setShowPoster(false)}/>
         </>
     );
 }

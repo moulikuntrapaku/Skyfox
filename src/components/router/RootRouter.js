@@ -9,6 +9,8 @@ import {Login, ProtectedRoute} from "../login";
 import PropTypes from "prop-types";
 import moment from "moment";
 
+
+
 const RootRouter = ({isAuthenticated, onLogin}) => {
     const todayDate = moment().format("YYYY-MM-DD");
 
@@ -20,7 +22,7 @@ const RootRouter = ({isAuthenticated, onLogin}) => {
 
                 <Route exact path="/login"
                        component={(props) => <Login isAuthenticated={isAuthenticated} onLogin={onLogin} {...props}/>}/>
-
+                
                 <Route exact path="/error" component={
                     () => <Error errorIcon={ErrorOutlineIcon} errorMessage={"Oops..Something went wrong"}/>
                 }
