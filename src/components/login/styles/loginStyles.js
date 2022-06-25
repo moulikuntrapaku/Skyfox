@@ -16,6 +16,9 @@ export default makeStyles((theme) =>
         },
         loginErrorMessage: {
             marginTop: "8px"
+        },
+        signUpLink:{
+            marginTop:"20px"
         }
     })
 );
