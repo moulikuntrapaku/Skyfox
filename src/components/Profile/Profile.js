@@ -3,7 +3,7 @@ import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, T
 import styles from "./styles/profileStyles";
 import PropTypes from "prop-types";
 import Cancel from '@material-ui/icons/Cancel';
-import { isValidPassword, isPasswordAndConfirmPasswordMatching } from "../signup/services/signupFormService";
+//import { isValidPassword, isPasswordAndConfirmPasswordMatching } from "../signup/services/signupFormService";
 import 'reactjs-popup/dist/index.css';
 
 
