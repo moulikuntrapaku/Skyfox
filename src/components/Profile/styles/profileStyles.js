@@ -19,7 +19,14 @@ export default makeStyles((theme) =>
         },
         changePasswordErrorMessage: {
             marginTop: "8px"
-        }
+        },
+        popupCloseButton:{
+            justifyContent: "right",
+        },
+        submitChangePasswordButton: {
+            justifyContent: "left",
+            margin: "5px 5px 10px 5px"
+        },
     })
 );
 

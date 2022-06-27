@@ -7,7 +7,7 @@ fileignoreconfig:
 - filename: src/components/layout/hooks/useAuth.js
   checksum: 33eb25a82571b35b6601efc88aef8a74514aa11844979875200f1f866e93daea
 - filename: src/components/Profile/Profile.js
-  checksum: 6d3152b986410fa0dcb266fadf3513fa995e33cd088555e2f8406836f1ba2571
+  checksum: e65e2099b173e26c08a4d5a40e8ab80e56fb984903b182b9a60dfd81e152bb3a
 - filename: package.json
   checksum: 0c7f39d9b2fb8a29bf37a70e9b310d812cf854338ecc0833e075f0150db27475
 - filename: src/components/router/RootRouter.js
@@ -21,3 +21,4 @@ fileignoreconfig:
 - filename: src/components/signup/Signup.js
   checksum: 74194d54bdab1ee00e65a112980b42f50f3998285767b352a8ab85a9ebf5a5cd
   version: ""
+  
