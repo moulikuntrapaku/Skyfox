@@ -3,7 +3,9 @@ import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, T
 import styles from "./styles/profileStyles";
 import PropTypes from "prop-types";
 import Cancel from '@material-ui/icons/Cancel';
+import { isValidPassword, isPasswordAndConfirmPasswordMatching } from "../signup/services/signupFormService";
 import 'reactjs-popup/dist/index.css';
+
 
 const Profile = () => {
   const classes = styles();
@@ -19,7 +21,8 @@ const Profile = () => {
   };
 
   // const isValid = () =>{
-  //     if(validateNewPassword() && validateConfirmPassword())
+  //   {isValidPassword(password) &&  className={classes.errorMessage}>{isValidPassword(password)}}
+  //   {isPasswordAndConfirmPasswordMatching(password,confirmPassword) && <p className={classes.errorMessage}>{isPasswordAndConfirmPasswordMatching(password,confirmPassword)}</p>
   //         return true;
   // }
 
