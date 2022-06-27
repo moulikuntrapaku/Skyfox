@@ -12,7 +12,7 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
     const {from} = location.state || {from: {pathname: "/"}};
     const {errorMessage, handleLogin} = useLogin(onLogin);
 
-    useEffect(() => {
+    useEffect(() => { //usage?
         if (isAuthenticated) {
             history.replace(from);
         }
@@ -55,6 +55,9 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
                                 >
                                     Login
                                 </Button>
+                                <span className={classes.signUpLink}>New to Skyfox?
+                                <a href="/signup">Signup here</a></span>
+                                
                             </Form>
                         );
                     }
