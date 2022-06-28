@@ -28,6 +28,10 @@ export const isLoggedIn = () => {
     return localStorage.getItem(tokenKey) !== null;
 }
 
+export const getUsername=() =>{
+    return window.atob(localStorage.getItem(tokenKey)).split(":").at(0);
+}
+
 export const logout = () => {
     localStorage.removeItem(tokenKey);
 };

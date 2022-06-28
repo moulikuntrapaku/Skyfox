@@ -29,7 +29,7 @@ const RootRouter = ({isAuthenticated, onLogin,onSignUp}) => {
                     () => <Error errorIcon={ErrorOutlineIcon} errorMessage={"Oops..Something went wrong"}/>
                 }
                 />
-                <Route exact path="/Profile" component={() => <Profile/>}/>
+                <Route exact path="/Profile" component={(props) => <Profile/>}/>
                       
 
                 <Route component={

@@ -1,72 +1,107 @@
-import React from "react";
-import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@material-ui/core";
+import React, {useState} from "react";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@material-ui/core";
 import styles from "./styles/profileStyles";
 import PropTypes from "prop-types";
 import Cancel from '@material-ui/icons/Cancel';
-//import { isValidPassword, isPasswordAndConfirmPasswordMatching } from "../signup/services/signupFormService";
+import { Formik,Form } from "formik";
+import {FormikTextField} from "../formik";
+import { getUsername } from "../../helpers/authService";
+import { formSchema, initialValues } from "./services/passwordChangeFormService";
+import { isValidPassword, isPasswordAndConfirmPasswordMatching } from "../signup/services/signupFormService";
 
 const Profile = () => {
   const classes = styles();
+  const username=getUsername();
+  const [password,setPassword]=useState("");
+  const [confirmPassword,setConfirmPassword]=useState("");
+  const [open, setOpen] = useState(false);
 
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpenPasswordchange = () => {
+  const handleOpenPasswordchangePopup = () => {
     setOpen(true);
   };
 
-  const handleClosePasswordChange = () => {
+  const handleClosePasswordChangePopup = () => {
     setOpen(false);
   };
-
-  // const isValid = () =>{
-  //   {isValidPassword(password) &&  className={classes.errorMessage}>{isValidPassword(password)}}
-  //   {isPasswordAndConfirmPasswordMatching(password,confirmPassword) && <p className={classes.errorMessage}>{isPasswordAndConfirmPasswordMatching(password,confirmPassword)}</p>
-  //         return true;
-  // }
 
   return (
 
     <div className={classes.profileContainer}>
       <Typography variant="h5">User Profile</Typography>
-      <Typography variant="body1"> name: Random</Typography>
-      <Typography variant="body1"> username: Something</Typography>
+      <br/>
+      <Typography variant="body1"> name: Admin</Typography>
+      <Typography variant="body1"> username: {username}</Typography>
+      <br/>
       <Button
         variant="contained"
         color="primary"
-        onClick={handleOpenPasswordchange}>
+        onClick={handleOpenPasswordchangePopup}>
         Change Password
-      </Button>
-
-      <Dialog open={open} onClose={handleClosePasswordChange}>
+      </Button> 
+    
+      <Dialog open={open} onClose={handleClosePasswordChangePopup}>
         <Button className={classes.popupCloseButton}
-          onClick={handleClosePasswordChange}><Cancel /></Button>
+          onClick={handleClosePasswordChangePopup}><Cancel /></Button>
         <DialogTitle >Change Password</DialogTitle>
         <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="old password"
-            label="Old password"
-            type="password"
-            fullWidth
-            variant="standard"
-          />
-          <TextField
-            margin="dense"
-            id="new password"
-            label="New password"
-            type="password"
-            fullWidth
-            variant="standard"
-          />
-          <TextField
-            margin="dense"
-            id="confirm new password"
-            label="Confirm new password"
-            type="password"
-            fullWidth
-            variant="standard"
-          />
+          <div className={classes.changePasswordContainer}>
+                <Formik initialValues={initialValues}
+                      //  onSubmit={handleChangePassword}
+                        validationSchema={formSchema}>
+                    {
+                        (props) => {
+                            const {
+                                isValid,
+                            } = props;
+                            return (
+                                <Form className={classes.changePasswordForm}>
+
+                                  <FormikTextField
+                                        required
+                                        value={password}
+                                        margin="dense"
+                                        name="oldPassword"
+                                        label="Old password"
+                                        onChange={(e)=>{
+                                          setPassword(e.target.value);
+                                      }}  
+                                           
+                                    />
+                                  {/* {isPasswordCorrect(password) && <p className={classes.errorMessage}>{isPasswordCorrect(password)}</p>} */}
+                                  <FormikTextField
+                                        required
+                                        value={password}
+                                        margin="dense"
+                                        name="newPassword"
+                                        label="New Password"
+                                        onChange={(e)=>{
+                                            setPassword(e.target.value);
+                                        }}   
+                                    />
+                                      
+                                    {isValidPassword(password) && <p className={classes.errorMessage}>{isValidPassword(password)}</p>}
+                                     <FormikTextField
+                                        required
+                                        value={confirmPassword}
+                                        type="password"
+                                        margin="dense"
+                                        name="confirmPassword"
+                                        label="Confirm Password"
+                                        onChange={(e)=>{
+                                            setConfirmPassword(e.target.value);
+                                        }}
+                                    /> 
+                                    {isPasswordAndConfirmPasswordMatching(password,confirmPassword) && <p className={classes.errorMessage}>{isPasswordAndConfirmPasswordMatching(password,confirmPassword)}</p>}
+                                    {/* {
+                                    errorMessage()
+                                    } */}
+
+                                    </Form>
+                            );
+                          }
+                        }
+                  </Formik>
+              </div>
         </DialogContent>
         <DialogActions className={classes.submitChangePasswordButton}>
           <Button
@@ -74,7 +109,8 @@ const Profile = () => {
             //disabled={!isValid}
             variant="contained"
             color="primary"
-            onClick={handleClosePasswordChange}>Change Password</Button>
+            onClick={handleClosePasswordChangePopup}>Change Password</Button>
+            {/* {isNotEqualToLastThreePasswords(password) && <p className={classes.errorMessage}>{isNotEqualToLastThreePasswords(password)}</p>} */}
         </DialogActions>
       </Dialog>
 

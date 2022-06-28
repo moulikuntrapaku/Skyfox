@@ -5,9 +5,9 @@ fileignoreconfig:
 - filename: yarn.lock
   checksum: 9eacfc2404d34e09139182a5a6ac753f2fdbaa1ec6e0f8080e8a43285820fea5
 - filename: src/components/layout/hooks/useAuth.js
-  checksum: 33eb25a82571b35b6601efc88aef8a74514aa11844979875200f1f866e93daea
+  checksum: e217eaa41824cd1c2f59e2ed1af5885c4bb450197ad663a17450b7cda54c762b
 - filename: src/components/Profile/Profile.js
-  checksum: 3a34e4b6c1e4ba092652f20fa51f2ff8b58546ea802051e49ea7de7dc0b2223c
+  checksum: d360b6f81642cf10e2505f728f542fbc295c041707f901bdecfd0aac68e76bd6
 - filename: package.json
   checksum: 0c7f39d9b2fb8a29bf37a70e9b310d812cf854338ecc0833e075f0150db27475
 - filename: src/components/router/RootRouter.js
@@ -20,5 +20,8 @@ fileignoreconfig:
   checksum: 33eb25a82571b35b6601efc88aef8a74514aa11844979875200f1f866e93daea
 - filename: src/components/signup/Signup.js
   checksum: 74194d54bdab1ee00e65a112980b42f50f3998285767b352a8ab85a9ebf5a5cd
-  version: ""
+- filename: src/components/Profile/services/passwordChangeFormService.js
+  checksum: 1f9cf41ffe9c6a29ad9cc0303e5cc3297a45bf977065ea46e5ccf73cccbb2189
+- filename: src/helpers/authService.js
+  checksum: ead98c9cecc7d77444e7a4fc34ad6bbea5000ad4a121599e315dcb8fc717f26e
   

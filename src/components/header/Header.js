@@ -1,14 +1,12 @@
 import React from "react";
-
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import MovieIcon from '@material-ui/icons/Movie';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ProfileIcon from '@material-ui/icons/Person';
 import styles from "./styles/headerStyles";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom"
 
-const Header = ({ onLogout, isAuthenticated }) => {
+const Header = ({ onLogout, isAuthenticated}) => {
     const classes = styles();
 
     const logoutSection = () => {
@@ -26,11 +24,11 @@ const Header = ({ onLogout, isAuthenticated }) => {
     const profileSection = () => {
         if (isAuthenticated) {
             return (
-                <div id="profileSection">
-                   <Typography className={classes.headerLogo} variant="body1">
-                       Welcome, Admin!
+                <div id="profileSection" >
+                   <Typography className={classes.headerLogo} variant="body1"
+                   align="right">
+                   Welcome, Admin! <a href="/Profile"> <ProfileIcon/></a>
                     </Typography> 
-                    <Link to="/Profile"><ProfileIcon/></Link>
                 </div>
             );
         }

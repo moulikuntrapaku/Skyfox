@@ -24,12 +24,18 @@ export default () => {
         logout();
         setIsAuthenticated(false);
     };
-   // const handlePasswordchange=async(username, oldPassword,newPassword){return userDetails;};
 
+    // const handleChangePassword=async(username,oldPassword,newPassword)=>{
+    //     const userDetails= await passwordChange(username,oldPassword,newPassword);
+    //     setIsAuthenticated(true);
+    //     return userDetails;
+    // }
+    
     return {
         isAuthenticated: isAuthenticated,
         handleLogin: handleLogin,
         handleLogout: handleLogout,
-        handleSignUp:handleSignUp
+        handleSignUp:handleSignUp,
+       // handleChangePassword:handleChangePassword,
     };
 }
