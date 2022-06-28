@@ -24,10 +24,9 @@ const Header = ({ onLogout, isAuthenticated}) => {
     const profileSection = () => {
         if (isAuthenticated) {
             return (
-                <div id="profileSection" >
-                   <Typography className={classes.headerLogo} variant="body1"
-                   align="right">
-                   Welcome, Admin! <a href="/Profile"> <ProfileIcon/></a>
+                <div id="profileSection" className={classes.profileLink}>
+                   <Typography className={classes.headerLogo} variant="body1">
+                   <a href="/Profile"> <ProfileIcon/></a> Welcome, Admin! 
                     </Typography> 
                 </div>
             );
@@ -41,13 +40,16 @@ const Header = ({ onLogout, isAuthenticated}) => {
             <Toolbar className={classes.toolbar}>
                 <a href="/" className={classes.headerLink}>
                     <MovieIcon className={classes.cinemaLogoIcon}/>
-                    <logoutSection className={classes.logoutLink}/>
+                        <logoutSection className={classes.logoutLink}/>
+                        <profileSection className={classes.profileLink}/>
                     <Typography className={classes.headerLogo} variant="h5">
                         SkyFox Cinema
-                    </Typography>
+                    </Typography>    
                 </a>
-                {profileSection()}
-                {logoutSection()}
+                <div className={classes.headerActions}>
+                    {profileSection()} &nbsp;
+                    &nbsp; {logoutSection()}           
+                </div>
             </Toolbar>
         </AppBar>
     );

@@ -7,18 +7,22 @@ export default makeStyles((theme) =>
             padding: "20px 40px"
         },
         changePasswordContainer:{
+            display: "flex",
             position:"center",
             justifyContent: "center",
             padding: "5px 5px",
 
         },
         changePasswordForm: {
+            display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            padding: "5px 5px",
+            padding: "5px 5px",     
         },
-        changePasswordErrorMessage: {
-            marginTop: "8px"
+        errorMessage: {
+            marginTop: "8px",
+            display:"inline"
+
         },
         popupCloseButton:{
             justifyContent: "right",

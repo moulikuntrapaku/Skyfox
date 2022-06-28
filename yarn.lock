@@ -9249,6 +9249,13 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-use-navigate@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-use-navigate/-/react-use-navigate-0.1.1.tgz#5657642832c33afbefb595532252d6ed81af1c67"
+  integrity sha512-FjSKKHmTy0DA0KBGsNlN97HVha3L3WCTRfXG2lucrgWjQGzqZZTKQ2FdCOZgE+rkBdBTAM6PLEV9MfUdm6MHlQ==
+  dependencies:
+    minimatch "^3.0.4"
+
 react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
@@ -9257,11 +9264,6 @@ react@^16.13.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-
-reactjs-popup@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/reactjs-popup/-/reactjs-popup-2.0.5.tgz#588a74966bb126699429d739948e3448d7771eac"
-  integrity sha512-b5hv9a6aGsHEHXFAgPO5s1Jw1eSkopueyUVxQewGdLgqk2eW0IVXZrPRpHR629YcgIpC2oxtX8OOZ8a7bQJbxA==
 
 read-pkg-up@^2.0.0:
   version "2.0.0"

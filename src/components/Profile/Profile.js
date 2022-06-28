@@ -14,6 +14,7 @@ const Profile = () => {
   const username=getUsername();
   const [password,setPassword]=useState("");
   const [confirmPassword,setConfirmPassword]=useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [open, setOpen] = useState(false);
 
   const handleOpenPasswordchangePopup = () => {
@@ -62,24 +63,25 @@ const Profile = () => {
                                         margin="dense"
                                         name="oldPassword"
                                         label="Old password"
+                                        type="password"
                                         onChange={(e)=>{
                                           setPassword(e.target.value);
                                       }}  
                                            
                                     />
-                                  {/* {isPasswordCorrect(password) && <p className={classes.errorMessage}>{isPasswordCorrect(password)}</p>} */}
                                   <FormikTextField
                                         required
-                                        value={password}
+                                        value={newPassword}
                                         margin="dense"
+                                        type="password"
                                         name="newPassword"
                                         label="New Password"
                                         onChange={(e)=>{
-                                            setPassword(e.target.value);
+                                            setNewPassword(e.target.value);
                                         }}   
                                     />
                                       
-                                    {isValidPassword(password) && <p className={classes.errorMessage}>{isValidPassword(password)}</p>}
+                                    {isValidPassword(newPassword) && <p className={classes.errorMessage}>{isValidPassword(newPassword)}</p>}
                                      <FormikTextField
                                         required
                                         value={confirmPassword}
@@ -91,11 +93,7 @@ const Profile = () => {
                                             setConfirmPassword(e.target.value);
                                         }}
                                     /> 
-                                    {isPasswordAndConfirmPasswordMatching(password,confirmPassword) && <p className={classes.errorMessage}>{isPasswordAndConfirmPasswordMatching(password,confirmPassword)}</p>}
-                                    {/* {
-                                    errorMessage()
-                                    } */}
-
+                                    {isPasswordAndConfirmPasswordMatching(newPassword,confirmPassword) && <p className={classes.errorMessage}>{isPasswordAndConfirmPasswordMatching(newPassword,confirmPassword)}</p>}
                                     </Form>
                             );
                           }
@@ -110,7 +108,6 @@ const Profile = () => {
             variant="contained"
             color="primary"
             onClick={handleClosePasswordChangePopup}>Change Password</Button>
-            {/* {isNotEqualToLastThreePasswords(password) && <p className={classes.errorMessage}>{isNotEqualToLastThreePasswords(password)}</p>} */}
         </DialogActions>
       </Dialog>
 

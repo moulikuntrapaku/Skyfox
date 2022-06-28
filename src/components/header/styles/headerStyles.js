@@ -13,6 +13,18 @@ export default makeStyles((theme) => ({
             alignItems: "center",
             cursor: "pointer"
         },
+        profileLink: {
+            display: 'flex',
+            justifyContent: "flex-start",
+            alignItems: "center",
+            cursor: "pointer"
+        },
+        Link: {
+            display: 'flex',
+            justifyContent: "flex-start",
+            alignItems: "center",
+            cursor: "pointer"
+        },
         cinemaLogoIcon: {
             fontSize: '2.25em'
         },
@@ -27,6 +39,11 @@ export default makeStyles((theme) => ({
         cartButton: {
             color: "white",
             padding: "10px"
+        },
+
+        headerActions: {
+            display: 'flex',
+            height: "100%"
         }
     })
 );
