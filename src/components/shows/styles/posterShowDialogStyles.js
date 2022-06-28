@@ -11,10 +11,11 @@ export default makeStyles((theme) =>
        
         dialogHeader: {
             display: "flex",
+            position: "relative",
             justifyContent: "center",
             fontWeight: "bold",
             padding: "10px 0px 10px 50px",
-            marginRight: "25px"
+            width: "96%"
         },
         moviePicture: {
             display: "flex",
@@ -22,6 +23,10 @@ export default makeStyles((theme) =>
             minWidth: "15%",
             marginBottom: "25px",
             marginTop:"10px"
+        },
+        closeIcon: {
+            position: "absolute",
+            right: 0
         }
     })
 );

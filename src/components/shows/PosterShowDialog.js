@@ -15,12 +15,11 @@ const PosterShowDialog = ({selectedShow, posterUrl,open, onClose}) => {
             <Dialog open={open} onClose={handleClose} fullWidth classes={{
                 paper: classes.dialogRoot }}>
                 <div className={classes.container}>
-                    <Typography variant="h6" className={classes.dialogHeader}>
-                        <div>
+                    <Typography>
+                        <div variant="h6" className={classes.dialogHeader}>
                         {selectedShow}
-                        </div>
-                        <div onClick={handleClose} >
-                         <CloseIcon/>
+                        
+                         <CloseIcon onClick={handleClose} className={classes.closeIcon}/>
                         </div>
                     </Typography>
                     <div className={classes.moviePicture}>
