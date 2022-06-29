@@ -12,17 +12,18 @@ fileignoreconfig:
   checksum: e84e390804767a3b8e1c149fb8024c02bbcf2449b0a90f03328cd013600224d8
 - filename: src/components/header/Header.js
   checksum: fcc05d16cfa783cf6d5f0ba52d03610db4022be158b150bcf909ad925de76a6a
-- filename: src/components/signup/services/signupFormService.js
-  checksum: 7f031a24f54d2ff2af35bfc32385abaa27c217d7e8800b70ed076e3bbf400839
 - filename: src/components/layout/hooks/useAuth.js
   checksum: 33eb25a82571b35b6601efc88aef8a74514aa11844979875200f1f866e93daea
-- filename: src/components/signup/Signup.js
-  checksum: 74194d54bdab1ee00e65a112980b42f50f3998285767b352a8ab85a9ebf5a5cd
 - filename: src/components/Profile/services/passwordChangeFormService.js
-  checksum: 1f9cf41ffe9c6a29ad9cc0303e5cc3297a45bf977065ea46e5ccf73cccbb2189
+  checksum: 95c3d06ca1226f8d3d9c1870410368c914deb40f8a272ffd7251e448cc5dd264
+- filename: src/components/signup/services/signupFormService.js
+  checksum: f12c6142f217e0da7104be08a4836588630d65f485131f0b2e715e5e0421535e
 - filename: src/helpers/authService.js
-  checksum: ead98c9cecc7d77444e7a4fc34ad6bbea5000ad4a121599e315dcb8fc717f26e
+  checksum: 4439a73f33bcdc8f80f62e2c50ee15f7b52c84a4dd4ccd108efff653cad44b15
+- filename: src/components/signup/Signup.js
+  checksum: 8e5aa4cde34ad86dbd2776a251861322329f4077f4a96a3bb3215179908f380b
 - filename: src/components/Profile/Profile.js
-  checksum: b4e178ad230f37f87b1913986f2b44c71c4fbd23f0af01642b0ac7bd5a03a50e
+  checksum: ff40cfb8ffe50bcdf951439b7c1557760e48ba1921fbcc3c7758d4215443a120
+
 
   
