@@ -66,10 +66,10 @@ export default ({location, history}) => {
                             <ListItem style={{cursor: 'pointer'}} >
                                 <ListItemAvatar onClick={()=>{
                                     setCurrentShow(show.movie.name);
-                                    setCurrentShowPoster(show.movie.poster);
+                                    setCurrentShowPoster(show.movie.url);
                                     setShowPoster(true);
                                 }} classes={{root: classes.localMoviesIcon}}>
-                                <img src={show.movie.poster} alt="Poster" width="45px" height="45px"/>
+                                <img src={show.movie.url} alt="Poster" width="45px" height="45px"/>
                                 </ListItemAvatar>
                                 <ListItemText onClick={() => {
                                 setSelectedShow(show);
