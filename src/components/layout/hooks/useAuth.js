@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
-import {isLoggedIn, login, logout,signup} from "../../../helpers/authService";
-
+import {isLoggedIn, login, logout,signup,changePassword} from "../../../helpers/authService";
 
 export default () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,17 +24,17 @@ export default () => {
         setIsAuthenticated(false);
     };
 
-    // const handleChangePassword=async(username,oldPassword,newPassword)=>{
-    //     const userDetails= await passwordChange(username,oldPassword,newPassword);
-    //     setIsAuthenticated(true);
-    //     return userDetails;
-    // }
+    const handleAuthChangePassword = async(oldPassword,newPassword,confirmPassword)=>{
+        const statusCode= await changePassword(oldPassword,newPassword,confirmPassword);
+        setIsAuthenticated(true);
+        return statusCode;
+     }
     
     return {
         isAuthenticated: isAuthenticated,
         handleLogin: handleLogin,
         handleLogout: handleLogout,
         handleSignUp:handleSignUp,
-       // handleChangePassword:handleChangePassword,
+        handleAuthChangePassword:handleAuthChangePassword,
     };
 }

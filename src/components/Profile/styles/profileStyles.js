@@ -11,18 +11,19 @@ export default makeStyles((theme) =>
             position:"center",
             justifyContent: "center",
             padding: "5px 5px",
+            width:"500px"
 
         },
         changePasswordForm: {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            padding: "5px 5px",     
+            padding: "5px 5px",
+            width: "100%"
         },
-        errorMessage: {
+        changePasswordErrorMessage: {
             marginTop: "8px",
             display:"inline"
-
         },
         popupCloseButton:{
             justifyContent: "right",
@@ -30,6 +31,12 @@ export default makeStyles((theme) =>
         submitChangePasswordButton: {
             justifyContent: "left",
             margin: "5px 5px 10px 5px"
+        },
+        line: {
+            width: "100%"
+        },
+        errorMeaasge:{
+            color:"red"
         },
     })
 );

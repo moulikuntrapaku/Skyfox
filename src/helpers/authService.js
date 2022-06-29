@@ -45,6 +45,22 @@ export const getUsername=() =>{
     return window.atob(localStorage.getItem(tokenKey)).split(":").at(0);
 }
 
+export const getUserPassword=(username)=>{
+    
+}
+
+export const changePassword=async(oldPassword,newPassword,confirmPassword) =>{
+    const token=authBasicChangePassword(oldPassword,newPassword,confirmPassword);
+    const config ={
+        headers: {
+            Authorization: "Basic" + token
+        }
+    };
+    const responce =await axios.put(`${urls.service}/users/changePassword`,config);
+    const statusCode=responce.data;
+    return statusCode;
+}
+
 export const logout = () => {
     localStorage.removeItem(tokenKey);
 };
@@ -55,3 +71,7 @@ const authBasic = (username, password) => {
 const authBasicSignup = (username, name,email,mobileNumber,password,confirmpassword) => {
     return window.btoa(username + ':' + name+ ':' + email+ ':' + mobileNumber+ ':' + password+ ':' + confirmpassword);
 }
+const authBasicChangePassword = (oldPassword,newPassword,confirmPassword) => {
+    return window.btoa(oldPassword + ':' + newPassword + ':' + confirmPassword);
+}
+

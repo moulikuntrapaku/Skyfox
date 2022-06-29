@@ -11,7 +11,8 @@ export default makeStyles((theme) => ({
             display: 'flex',
             justifyContent: "flex-start",
             alignItems: "center",
-            cursor: "pointer"
+            cursor: "pointer",
+            paddingLeft:"20px"
         },
         profileLink: {
             display: 'flex',
@@ -40,10 +41,9 @@ export default makeStyles((theme) => ({
             color: "white",
             padding: "10px"
         },
-
         headerActions: {
-            display: 'flex',
-            height: "100%"
+            display:"flex",
+            height:"100%"
         }
     })
 );

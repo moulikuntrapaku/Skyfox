@@ -58,7 +58,7 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
                                     className={classes.loginButton}
                                 >
                                     Login
-                                </Button>
+                                    </Button>
                                 <span className={classes.signUpText}>New to Skyfox?
                                  <a className={classes.signUpLink} onClick={()=>history.push('/Signup')}> Signup here</a>                              
                                 </span>

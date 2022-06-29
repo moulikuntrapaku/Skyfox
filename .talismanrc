@@ -5,30 +5,25 @@ fileignoreconfig:
 - filename: yarn.lock
   checksum: 9dcb74d10cb54afa53a5db589d6b06e945f4221c1b96b646503ddd28b49b5a57
 - filename: src/components/layout/hooks/useAuth.js
-  checksum: e217eaa41824cd1c2f59e2ed1af5885c4bb450197ad663a17450b7cda54c762b
+  checksum: bc3a411d540ea88051b76cd7a561f123052c262113ad36dd570cde0d0b2d54a1
+- filename: src/components/Profile/Profile.js
+  checksum: cf9649e79302deae4dece96af1201a071e1fd9c5355d21eaf1acb7c75d91bb1a
 - filename: package.json
   checksum: 0c7f39d9b2fb8a29bf37a70e9b310d812cf854338ecc0833e075f0150db27475
 - filename: src/components/router/RootRouter.js
   checksum: e84e390804767a3b8e1c149fb8024c02bbcf2449b0a90f03328cd013600224d8
 - filename: src/components/header/Header.js
   checksum: fcc05d16cfa783cf6d5f0ba52d03610db4022be158b150bcf909ad925de76a6a
-- filename: src/components/layout/hooks/useAuth.js
-  checksum: 33eb25a82571b35b6601efc88aef8a74514aa11844979875200f1f866e93daea
 - filename: src/components/Profile/services/passwordChangeFormService.js
-  checksum: 95c3d06ca1226f8d3d9c1870410368c914deb40f8a272ffd7251e448cc5dd264
+  checksum: bd567c7e649228c777d29fa19671d543bf28807f684e36aff36fa7b2c0ce2481
 - filename: src/components/signup/services/signupFormService.js
   checksum: f12c6142f217e0da7104be08a4836588630d65f485131f0b2e715e5e0421535e
 - filename: src/helpers/authService.js
-  checksum: 4439a73f33bcdc8f80f62e2c50ee15f7b52c84a4dd4ccd108efff653cad44b15
+  checksum: 6f610c4d3019bbb26ba0ec3d6b637f0099daa89318f26ffd15172c5eb3a8b0fc
 - filename: src/components/signup/Signup.js
-<<<<<<< HEAD
-  checksum: 8e5aa4cde34ad86dbd2776a251861322329f4077f4a96a3bb3215179908f380b
-=======
   checksum: e089f0bb20608bc6e0f1db4bf056d006dfef43a371aad05e094507ca78be1bb3
->>>>>>> 94b068e (Refactor. refactor talismanrc file)
-- filename: src/components/Profile/Profile.js
-  checksum: ff40cfb8ffe50bcdf951439b7c1557760e48ba1921fbcc3c7758d4215443a120
-
+- filename: src/components/Profile/hooks/useChangePassword.js
+  checksum: 0982404f6953b67ed6864bcbb8fe1bf7b5416b8833afc5ad5ab709542340b476
 
 
   
