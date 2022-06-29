@@ -51,9 +51,6 @@ const Profile = () => {
                         validationSchema={formSchema}>
                     {
                         (props) => {
-                            const {
-                                isValid,
-                            } = props;
                             return (
                                 <Form className={classes.changePasswordForm}>
 
