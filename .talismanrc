@@ -21,9 +21,14 @@ fileignoreconfig:
 - filename: src/helpers/authService.js
   checksum: 4439a73f33bcdc8f80f62e2c50ee15f7b52c84a4dd4ccd108efff653cad44b15
 - filename: src/components/signup/Signup.js
+<<<<<<< HEAD
   checksum: 8e5aa4cde34ad86dbd2776a251861322329f4077f4a96a3bb3215179908f380b
+=======
+  checksum: e089f0bb20608bc6e0f1db4bf056d006dfef43a371aad05e094507ca78be1bb3
+>>>>>>> 94b068e (Refactor. refactor talismanrc file)
 - filename: src/components/Profile/Profile.js
   checksum: ff40cfb8ffe50bcdf951439b7c1557760e48ba1921fbcc3c7758d4215443a120
+
 
 
   
