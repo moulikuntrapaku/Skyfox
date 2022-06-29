@@ -7,11 +7,13 @@ import PropTypes from "prop-types";
 import useLogin from "./hooks/useLogin";
 import {formSchema, initialValues} from "./services/loginFormService";
 
+
+
+
 const Login = ({location, history, isAuthenticated, onLogin}) => {
     const classes = styles();
     const {from} = location.state || {from: {pathname: "/"}};
     const {errorMessage, handleLogin} = useLogin(onLogin);
-
     useEffect(() => { //usage?
         if (isAuthenticated) {
             history.replace(from);
@@ -24,10 +26,12 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
                     onSubmit={handleLogin}
                     validationSchema={formSchema}>
                 {
+                   
                     (props) => {
                         const {
                             isValid,
                         } = props;
+                        
                         return (
                             <Form className={classes.loginForm}>
                                 <FormikTextField
@@ -55,8 +59,10 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
                                 >
                                     Login
                                 </Button>
-                                <span className={classes.signUpLink}>New to Skyfox?
-                                <a href="/signup">Signup here</a></span>
+                                <span className={classes.signUpText}>New to Skyfox?
+                                 <a className={classes.signUpLink} onClick={()=>history.push('/Signup')}> Signup here</a>                              
+                                </span>
+
                                 
                             </Form>
                         );

@@ -17,8 +17,12 @@ export default makeStyles((theme) =>
         loginErrorMessage: {
             marginTop: "8px"
         },
-        signUpLink:{
+        signUpText:{
             marginTop:"20px"
+        },
+        signUpLink:{
+            cursor:"pointer",
+            color:"purple"
         }
     })
 );

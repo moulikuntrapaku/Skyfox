@@ -1,21 +1,27 @@
-import React, { useEffect,useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import {Button} from "@material-ui/core";
-import {Form, Formik} from "formik";
+import { Form, Formik} from "formik";
 import {FormikTextField} from "../formik";
 import styles from "./styles/signupStyles";
 import PropTypes from "prop-types";
-import { formSchema ,initialValues,isPasswordAndConfirmPasswordMatching,isValidMobileNumber,isValidPassword} from './services/signupFormService';
+import { formSchema ,initialValues, validateConfirmPassword} from './services/signupFormService';
 import useSignUp from './hooks/useSignUp';
+import {InputAdornment, IconButton } from "@material-ui/core";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 
 
-const Signup=(location, history,isAuthenticated, onSignUp)=>{
+const Signup=(props)=>{
+    const {location, history,isAuthenticated, onSignUp}=props;
     const classes = styles();
-    const [mobileNumber, setmobileNumber] = useState("");
-    const [password,setPassword]=useState("");
-    const [confirmPassword,setConfirmPassword]=useState("");
     const {from} = location.state || {from: {pathname: "/login"}};
     const {errorMessage, handleSignUp} = useSignUp(onSignUp);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
+
   
     
     useEffect(() => {
@@ -34,6 +40,7 @@ const Signup=(location, history,isAuthenticated, onSignUp)=>{
                                 isValid,
                             } = props;
                             return (
+                               
                                 <Form className={classes.signUpForm}>
                                     <FormikTextField
                                         required
@@ -53,41 +60,53 @@ const Signup=(location, history,isAuthenticated, onSignUp)=>{
                                         name="email"
                                         label="Email"
                                     />
-                                      <FormikTextField
-                                        required
-                                        value={mobileNumber}
+                                    <FormikTextField
+                                        required   
                                         margin="dense"
                                         name="mobileNumber"
-                                        label="Mobile Number"
-                                        onChange={(e) => {
-                                            setmobileNumber(e.target.value); 
-                                          }}    
-                                    />
-                                    {isValidMobileNumber(mobileNumber) && <div className={classes.errorMessage}>{isValidMobileNumber(mobileNumber)}</div>}
-                                    <FormikTextField
-                                        required
-                                        value={password}
-                                        margin="dense"
-                                        name="password"
-                                        label="Password"
-                                        onChange={(e)=>{
-                                            setPassword(e.target.value);
-                                        }}   
-                                    />
                                       
-                                    {isValidPassword(password) && <p className={classes.errorMessage}>{isValidPassword(password)}</p>}
-                                     <FormikTextField
-                                        required
-                                        value={confirmPassword}
-                                        type="password"
-                                        margin="dense"
-                                        name="confirmPassword"
-                                        label="Confirm Password"
-                                        onChange={(e)=>{
-                                            setConfirmPassword(e.target.value);
-                                        }}
-                                    /> 
-                                    {isPasswordAndConfirmPasswordMatching(password,confirmPassword) && <p className={classes.errorMessage}>{isPasswordAndConfirmPasswordMatching(password,confirmPassword)}</p>}
+                                        label="Mobile Number"
+                                   />
+                                  
+                                  <FormikTextField
+                                     label='Password'
+                                     type={showPassword ? "text" : "password"}
+                                       required
+                                       margin="dense"
+                                       name="password"
+                                       InputProps={{
+                                        endAdornment: (
+                                          <InputAdornment position="end">
+                                            <IconButton
+                                              onClick={handleClickShowPassword}
+                                            >
+                                              {showPassword ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                          </InputAdornment>
+                                        )
+                                      }}
+                                      />
+                                  
+    
+                                  <FormikTextField
+                                     label='Confirm Password'
+                                     type={showConfirmPassword ? "text" : "password"}
+                                       required
+                                       margin="dense"
+                                       name="confirmPassword"
+                                       InputProps={{
+                                        endAdornment: (
+                                          <InputAdornment position="end">
+                                            <IconButton
+                                              onClick={handleClickShowConfirmPassword}
+                                            >
+                                              {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                          </InputAdornment>
+                                        )
+                                      }}
+                                      />
+                                    {validateConfirmPassword(props.values) && <p className={classes.errorMessage}>{validateConfirmPassword(props.values)}</p>}
                                     {
                                     errorMessage()
                                     }
@@ -99,6 +118,7 @@ const Signup=(location, history,isAuthenticated, onSignUp)=>{
                                         className={classes.signUpButton}
                                     >
                                         Signup
+                                        
                                     </Button>
                                 </Form>
                             );

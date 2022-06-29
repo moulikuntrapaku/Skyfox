@@ -19,6 +19,11 @@ jest.mock("./services/loginFormService", () => ({
     })
 );
 
+jest.mock('react-router', () => ({
+    ...jest.requireActual('react-router'),
+    useHistory: () => ({ push: jest.fn() })
+}));
+
 describe("Basic Rendering", () => {
     const testOnLogin = jest.fn();
     const testHandleLogin = jest.fn();
