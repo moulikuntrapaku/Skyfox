@@ -9,11 +9,12 @@ export default makeStyles((theme) =>
         },
         container: {
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            padding: "15px"
         },
         dialogHeader: {
             fontWeight: "bold",
-            padding: "10px 0px 20px 10px"
+            padding: "0px 0px 20px 5px"
         },
         dialogContent: {
             display: "flex",
@@ -26,7 +27,7 @@ export default makeStyles((theme) =>
         },
         dialogMain: {
             display: "flex",
-            padding: "0px 20px 20px 0px",
+            padding: "0px 20px 20px 10px",
             flexDirection: "column",
             justifyContent: "space-between",
             minWidth: "85%",

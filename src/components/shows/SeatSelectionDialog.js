@@ -31,7 +31,7 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                         <div style={{cursor: 'pointer'}} onClick={()=>{
                             setShowPoster(true);
                         }} className={classes.moviePicture}>
-                                <img src={selectedShow.movie.url} alt="poster" width="65px" height="85px"/>
+                                <img src={selectedShow.movie.url} alt="poster" width="75px" height="105px"/>
                         </div>
                         <div className={classes.dialogMain}>
                             <Typography className={classes.movieMarquee} color="primary">
@@ -42,6 +42,9 @@ const SeatSelectionDialog = ({selectedShow, updateShowsRevenue, open, onClose}) 
                             </Typography>
                             <Typography variant="subtitle2" color="primary" className={classes.movieMarquee}>
                                 {selectedShow.movie.duration}
+                            </Typography>
+                            <Typography variant="body2">
+                            IMDb rating: {selectedShow.movie.imdbRating}
                             </Typography>
                             <div className={classes.dialogBottom}>
                                 <div className={classes.seatsAndAmount}>

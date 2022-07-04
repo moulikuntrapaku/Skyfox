@@ -40,7 +40,8 @@ export default ({location, history}) => {
             "name": "",
             "duration": "",
             "plot": "",
-            "poster":""
+            "poster":"",
+            "imdbRating":""
         },
         "slot": {
             "id": "",
@@ -69,7 +70,7 @@ export default ({location, history}) => {
                                     setCurrentShowPoster(show.movie.url);
                                     setShowPoster(true);
                                 }} classes={{root: classes.localMoviesIcon}}>
-                                <img src={show.movie.url} alt="Poster" width="45px" height="45px"/>
+                                <img src={show.movie.url} alt="Poster" width="45px" height="60px"/>
                                 </ListItemAvatar>
                                 <ListItemText onClick={() => {
                                 setSelectedShow(show);
@@ -83,6 +84,9 @@ export default ({location, history}) => {
                                             color="textPrimary"
                                         >
                                             {show.slot.startTime}
+                                        </Typography>
+                                        <Typography variant="body2">
+                                        IMDb rating: {show.movie.imdbRating}
                                         </Typography>
                                     </>
                                 }/>
