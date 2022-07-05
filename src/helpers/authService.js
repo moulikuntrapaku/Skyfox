@@ -64,7 +64,7 @@ export const changePassword=async(oldPassword,newPassword) =>{
         "newPassword":newPassword
     }
     const response =await axios.put(`${urls.service}/user/password`,payload,config);
-    console.log(response.data + "anything");
+    console.log(response);
     const statusCode = response.data;
     return statusCode;
 }

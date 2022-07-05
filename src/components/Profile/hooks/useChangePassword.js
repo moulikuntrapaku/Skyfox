@@ -9,11 +9,15 @@ import Alert from "@material-ui/lab/Alert/Alert";
 export default (handleAuthChangePassword) => {
     const classes = styles();
     const [showError,setShowError]=useState(false);
+    const [message, setMessage] = useState();
     const [showSucces, setShowSuccess] = useState(false);
     const errorMessage=()=>{
         if(showError){
             return(
-                <Typography variant="body1" color="error" className={classes.changePasswordErrorMessage}>change password failed</Typography>
+                //<Typography variant="body1" color="error" className={classes.changePasswordErrorMessage}>Change password failed</Typography>
+                <Alert severity="error" icon={false} variant="filled">
+                {message}
+                </Alert>
 
             )
         }
@@ -21,7 +25,7 @@ export default (handleAuthChangePassword) => {
             return (
                 <div>
                 <Alert severity="success" icon={false} variant="filled">
-                Success! Login with new password
+                {message}
                 </Alert>
                 </div>
             )
@@ -38,15 +42,22 @@ export default (handleAuthChangePassword) => {
         //     showToast('error',message);}
         setShowError(false);
         setShowSuccess(true);
-        setTimeout(handleLogout, 2000);
+        setMessage(statusCode);
+        //setTimeout(handleLogout, 2000);
         // console.log(statusCode + "" + showSucces);
     } catch(err){
-        console.log(err);
+        console.log(err.response.data.message);
         if(err.response && err.response.status===401){
             setShowError(true);
-        }else{
+        }
+        if(err.response && err.response.status!=200){
+            setShowError(true);
+        }
+        else{
             throw err;
         }
+        setMessage(err.response.data.message);
+            
     }
    };
    return{

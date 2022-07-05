@@ -42,7 +42,7 @@ const Profile = () => {
       <Dialog open={open} onClose={handleCloseChangePasswordPopup}>
         <Button className={classes.popupCloseButton}
           onClick={handleCloseChangePasswordPopup}><Cancel /></Button>
-        <DialogTitle >Change Password</DialogTitle>
+        <DialogTitle>&nbsp;Change Password </DialogTitle>
         <DialogContent>
           <div className={classes.changePasswordContainer}>
                 <Formik initialValues={initialValues}
@@ -113,6 +113,7 @@ const Profile = () => {
                                         }}
                                     />
                                     {validateConfirmPassword(props.values) && <p className={classes.errorMeaasge}>{validateConfirmPassword(props.values)}</p>}
+                                     <br/>
                                      <Button
                                      type="submit"
                                      disabled={!isValid}
