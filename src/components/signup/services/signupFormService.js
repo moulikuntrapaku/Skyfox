@@ -25,7 +25,7 @@ export const formSchema = object({
         .required("Password is required")
         .matches(/(?=.*?[A-Z])/,"Password should contain atleast one Uppercase")
         .matches(/(?=.*?[0-9])/,"Password should contain atleast one digit")
-        .matches(/(?=.*?[#?!@$%^&*-])/,"Password should contain atleast one special character")
+        .matches(/(?=.*?[#?!@$%^&*-+=])/,"Password should contain atleast one special character")
         .matches(/^.{8,64}$/,"Password should be of minimum 8 characters and maximum 64 characters"),
     confirmPassword: string("Enter confirm password")
         .required("Confirm Password is required")

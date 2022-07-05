@@ -15,7 +15,7 @@ export default () => {
 
     const handleSignUp=async(name,username,email,mobileNumber, password,confirmPassword)=>{
         const customerDetails=await signup(name,username,email,mobileNumber, password,confirmPassword);
-        setIsAuthenticated(true);
+        // setIsAuthenticated(false);
         return customerDetails;
     }
 

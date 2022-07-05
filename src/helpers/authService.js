@@ -24,17 +24,24 @@ export const login = async (username, password) => {
     return userDetails;
 }
 
-export const signup = async (username, name,email,mobileNumber,password,confirmpassword) => {
-    const token = authBasicSignup(username,name,email,mobileNumber,password,confirmpassword);
+export const signup = async (name,username,email,mobileNumber,password) => {
     const config = {
         headers: {
-            Authorization: 'Basic ' + token
+            
+       'Content-Type':'application/json',
         }
     };
-    const response = await axios.post(`${urls.service}/customer/add`, config);
-    const userDetails = response.data;
-    localStorage.setItem(tokenKey, token)
-    return userDetails;
+    const payload = {'name':name,
+    'phoneNumber':mobileNumber,
+    'email':email,
+    'user':{
+        'username' : username,
+         'password':password
+    }}
+    
+    const response = await axios.post(`${urls.service}/customer/add`,payload,config);
+    const status = response.data;
+    return status;
 }
 
 export const isLoggedIn = () => {
