@@ -84,7 +84,8 @@ export const logout = () => {
 const authBasic = (username, password) => {
     return window.btoa(username + ':' + password);
 }
-const authBasicSignup = (username, name,email,mobileNumber,password,confirmpassword) => {
-    return window.btoa(username + ':' + name+ ':' + email+ ':' + mobileNumber+ ':' + password+ ':' + confirmpassword);
+
+const authBasicChangePassword = (oldPassword,newPassword,confirmPassword) => {
+    return window.btoa(oldPassword + ':' + newPassword + ':' + confirmPassword);
 }
 
