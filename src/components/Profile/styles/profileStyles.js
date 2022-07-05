@@ -30,10 +30,14 @@ export default makeStyles((theme) =>
         },
         submitChangePasswordButton: {
             justifyContent: "left",
-            margin: "5px 5px 10px 5px"
+            margin: "5px 5px 10px 5px",
+            width: "200px"
         },
         line: {
             width: "100%"
+        },
+        toastMessage: {
+            width: "40%"
         },
         errorMeaasge:{
             color:"red"

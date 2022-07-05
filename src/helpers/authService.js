@@ -49,17 +49,26 @@ export const getUserPassword=(username)=>{
     
 }
 
-export const changePassword=async(oldPassword,newPassword,confirmPassword) =>{
-    const token=authBasicChangePassword(oldPassword,newPassword,confirmPassword);
-    const config ={
+export const changePassword=async(oldPassword,newPassword) =>{
+    const token=localStorage.getItem(tokenKey);
+    console.log("token"+token);
+    const config = {
         headers: {
-            Authorization: "Basic" + token
+            Authorization: 'Basic ' + token, 
+            'Content-Type':'application/json'
         }
-    };
-    const responce =await axios.put(`${urls.service}/users/changePassword`,config);
-    const statusCode=responce.data;
+    }; 
+    const payload={
+        "userName":getUsername(),
+        "oldPassword":oldPassword,
+        "newPassword":newPassword
+    }
+    const response =await axios.put(`${urls.service}/user/password`,payload,config);
+    console.log(response.data + "anything");
+    const statusCode = response.data;
     return statusCode;
 }
+
 
 export const logout = () => {
     localStorage.removeItem(tokenKey);
@@ -70,8 +79,5 @@ const authBasic = (username, password) => {
 }
 const authBasicSignup = (username, name,email,mobileNumber,password,confirmpassword) => {
     return window.btoa(username + ':' + name+ ':' + email+ ':' + mobileNumber+ ':' + password+ ':' + confirmpassword);
-}
-const authBasicChangePassword = (oldPassword,newPassword,confirmPassword) => {
-    return window.btoa(oldPassword + ':' + newPassword + ':' + confirmPassword);
 }
 

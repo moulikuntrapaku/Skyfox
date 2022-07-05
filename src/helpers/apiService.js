@@ -13,6 +13,7 @@ const promiseWithErrorHandling = (promise) => {
     });
 };
 
+
 export default {
     post: async (path, payload) => {
         return promiseWithErrorHandling(axios.post(`${urls.service}/${path}`, payload, authHeader()));
@@ -20,6 +21,10 @@ export default {
 
     get: async (path) => {
         return promiseWithErrorHandling(axios.get(`${urls.service}/${path}`, authHeader()));
+    },
+
+    put: async (path,payload) => {
+        return promiseWithErrorHandling(axios.put(`${urls.service}/${path}`,payload,authHeader()));
     },
 
     postWithoutErrorHandling: async (path, payload) => {

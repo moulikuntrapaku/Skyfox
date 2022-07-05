@@ -19,7 +19,7 @@ export const formSchema = object({
 });
 export const validateConfirmPassword = values => {
     if (values.confirmPassword!=="" && values.newPassword!==values.confirmPassword) {
-      return 'CurrentPassword doesnt match with Password';
+      return 'Current Password doesnt match with Password';
     }
 return null;
 };
