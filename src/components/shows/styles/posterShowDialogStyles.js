@@ -14,7 +14,7 @@ export default makeStyles((theme) =>
             position: "relative",
             justifyContent: "center",
             fontWeight: "bold",
-            padding: "10px 0px 10px 50px",
+            padding: "10px 0px 10px 30px",
             width: "96%"
         },
         moviePicture: {
