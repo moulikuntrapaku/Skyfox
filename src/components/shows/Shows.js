@@ -19,6 +19,7 @@ import ShowsRevenue from "./ShowsRevenue";
 import useShowsRevenue from "./hooks/useShowsRevenue";
 import SeatSelectionDialog from "./SeatSelectionDialog";
 import PosterShowDialog from "./PosterShowDialog";
+import {getUserRole} from "../../helpers/authService";
 
 export default ({location, history}) => {
     const classes = styles();
@@ -31,6 +32,7 @@ export default ({location, history}) => {
     const [showPoster, setShowPoster] = useState(false);
     const [currentShow, setCurrentShow] = useState("");
     const [currentShowPoster, setCurrentShowPoster] = useState("");
+    const isAuthenticated = getUserRole();
     const emptyShow = {
         "id": "",
         "date": "",
@@ -58,7 +60,7 @@ export default ({location, history}) => {
                 <Typography variant="h4" className={classes.showsHeader}>
                     Shows ({showsDate.format(HEADER_DATE_FORMAT)})
                 </Typography>
-                <ShowsRevenue showsRevenue={showsRevenue} showsRevenueLoading={showsRevenueLoading}/>
+                <ShowsRevenue isAuthenticated={isAuthenticated} showsRevenue={showsRevenue} showsRevenueLoading={showsRevenueLoading}/>
             </div>
             <List className={classes.listRoot}>
                 {

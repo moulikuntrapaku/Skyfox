@@ -4,9 +4,10 @@ import styles from "./styles/showsRevenueStyles"
 import PropTypes from "prop-types";
 import {INR_SYMBOL} from "../../Constants";
 
-const ShowsRevenue = ({showsRevenue, showsRevenueLoading}) => {
+const ShowsRevenue = ({showsRevenue, isAuthenticated,showsRevenueLoading}) => {
     const classes = styles();
-
+    // Todo
+    if(isAuthenticated === "ADMIN"){
     return (
         <>
             {
@@ -24,6 +25,10 @@ const ShowsRevenue = ({showsRevenue, showsRevenueLoading}) => {
             }
         </>
     );
+    }
+    else{
+        return(<> </>);
+    }
 };
 
 ShowsRevenue.propTypes = {

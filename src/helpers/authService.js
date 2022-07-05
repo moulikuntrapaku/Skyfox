@@ -51,6 +51,10 @@ export const isLoggedIn = () => {
 export const getUsername=() =>{
     return window.atob(localStorage.getItem(tokenKey)).split(":").at(0);
 }
+export const getUserRole = async () =>{
+    const response = await axios.get(`${urls.service}/user`);
+    return response.data["role"];
+}
 
 export const getUserPassword=(username)=>{
     
