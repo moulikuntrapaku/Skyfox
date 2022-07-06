@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import Alert from "@material-ui/lab/Alert/Alert";
-import styles from "../styles/signupStyles"
-import { Redirect } from "react-router-dom";
+
+
 
 export default (onSignUp) => {
-    const classes = styles(); 
+
     const [showError, setShowError] = useState(false);
     const [message, setMessage] = useState();
     const [showSucces, setShowSuccess] = useState(false);
@@ -22,7 +22,6 @@ export default (onSignUp) => {
             return (
                 <Alert severity="success">
                     {message}
-                    {/* <Redirect to = '/login' /> */}
                 </Alert>
             ) 
         }

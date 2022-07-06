@@ -4,7 +4,7 @@ import { Form, Formik} from "formik";
 import {FormikTextField} from "../formik";
 import styles from "./styles/signupStyles";
 import PropTypes from "prop-types";
-import { formSchema ,initialValues, validateConfirmPassword} from './services/signupFormService';
+import { formSchema ,initialValues} from './services/signupFormService';
 import useSignUp from './hooks/useSignUp';
 import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
@@ -77,9 +77,11 @@ const Signup=(props)=>{
                                        name="password"
                                        InputProps={{
                                         endAdornment: (
-                                          <InputAdornment position="end">
+                                          <InputAdornment position="end" >
                                             <IconButton
                                               onClick={handleClickShowPassword}
+                                              size="small"
+                                              color='primary'
                                             >
                                               {showPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>
@@ -100,6 +102,8 @@ const Signup=(props)=>{
                                           <InputAdornment position="end">
                                             <IconButton
                                               onClick={handleClickShowConfirmPassword}
+                                              size="small"
+                                              color='primary'
                                             >
                                               {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
                                             </IconButton>
@@ -107,7 +111,6 @@ const Signup=(props)=>{
                                         )
                                       }}
                                       />
-                                    {validateConfirmPassword(props.values) && <p className={classes.errorMessage}>{validateConfirmPassword(props.values)}</p>}
                                     {
                                     errorMessage()
                                     }

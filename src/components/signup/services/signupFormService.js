@@ -1,4 +1,4 @@
-import {object, string} from "yup";
+import {object, string,ref} from "yup";
 
 export const initialValues = {
     name:'',
@@ -19,7 +19,7 @@ export const formSchema = object({
         .matches(/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,64}[a-zA-Z0-9]$/,"Username Should be valid"),
     email: string("Enter email")
         .required("Email is required")
-        .matches(/^[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,20}[\.][a-z]{2,5}$/,"Enter valid email id"),
+        .email(),
     mobileNumber: string("Enter Mobile Number")
         .required("Mobile no is required")
         .matches(/^\d{10}$/, "Enter valid phone number"),
@@ -32,13 +32,7 @@ export const formSchema = object({
         .matches( /^\S*$/,"No Whitespace allowed"),
     confirmPassword: string("Enter confirm password")
         .required("Confirm Password is required")
+        .oneOf([ref("password"),null],'ConfirmPassword doesnt match with Password'),
 });
-
-export const validateConfirmPassword = values => {
-    if (values.confirmPassword!=="" && values.password!==values.confirmPassword) {
-      return 'CurrentPassword doesnt match with Password';
-    }
-    return null;
-  };
 
 
