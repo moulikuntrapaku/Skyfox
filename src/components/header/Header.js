@@ -12,7 +12,7 @@ const Header = ({ onLogout, isAuthenticated}) => {
     const logoutSection = () => {
         if (isAuthenticated) {
             return (
-                <div id ="logoutSection" onClick={onLogout} className={classes.logoutLink}>
+                <div id ="logoutSection" onClick={onLogout} className={classes.profilediv}>
                     <ExitToAppIcon/>
                     <Typography className={classes.headerLogo} variant="body1">
                         Logout
@@ -24,10 +24,13 @@ const Header = ({ onLogout, isAuthenticated}) => {
     const profileSection = () => {
         if (isAuthenticated) {
             return (
-                <div id="profileSection" >
-                   <Typography className={classes.headerLogo} variant="body1"
-                   align="right">
-                   Welcome, Admin! <a href="/Profile"> <ProfileIcon style={{color:"white"}}/></a>
+                <div id="profileSection" className={classes.logoutLink}>
+
+                   <Typography className={classes.headerLogo} variant="body1">
+                    <div className={classes.profilediv}>
+                      Welcome 
+                      <a href="/Profile"> <ProfileIcon style={{color:"white"}}/></a>
+                      </div>
                     </Typography> 
                 </div>
             );
@@ -40,15 +43,20 @@ const Header = ({ onLogout, isAuthenticated}) => {
         <AppBar position={"sticky"}>
             <Toolbar className={classes.toolbar}>
                 <a href="/" className={classes.headerLink}>
-                    <MovieIcon className={classes.cinemaLogoIcon}/>
-                        <logoutSection className={classes.logoutLink}/>
-                        <profileSection className={classes.profileLink}/>
+                   <MovieIcon className={classes.cinemaLogoIcon}/>
+                   &nbsp;
+                   &nbsp;
                     <Typography className={classes.headerLogo} variant="h5">
                         SkyFox Cinema
-                    </Typography>    
+                    </Typography>
+                    <div className={classes.commonDiv}>
+                        <logoutSection className={classes.logoutLink}/>
+                        <profileSection className={classes.logoutLink}/>
+                    </div>
+                        
                 </a>
                 <div className={classes.headerActions}>
-                 {profileSection()} 
+                 {profileSection()} &nbsp; &nbsp;
                  {logoutSection()}
                 </div>
                 

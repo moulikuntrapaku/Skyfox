@@ -1,67 +1,74 @@
-import React, {useState} from "react";
-import Typography from "@material-ui/core/Typography";
-import styles from "../styles/profileStyles";
+import React, { useState } from "react";
 import Alert from "@material-ui/lab/Alert/Alert";
-//import { showToast } from "../toastMessage";
-// import useAuth from "../../layout/hooks/useAuth";
-// const {handleLogout} = useAuth();
-
+import useAuth from "../../layout/hooks/useAuth";
+import IconButton from '@material-ui/core/IconButton';
+import { Collapse } from "@material-ui/core";
+import Cancel from "@material-ui/icons/Cancel";
 export default (handleAuthChangePassword) => {
-    const classes = styles();
-    const [showError,setShowError]=useState(false);
+    const [open,setOpen]=useState(true);
+    const [showError, setShowError] = useState(false);
+    const { handleLogout } = useAuth();
     const [message, setMessage] = useState();
     const [showSucces, setShowSuccess] = useState(false);
-    const errorMessage=()=>{
-        if(showError){
-            return(
-                //<Typography variant="body1" color="error" className={classes.changePasswordErrorMessage}>Change password failed</Typography>
-                <Alert severity="error" icon={false} variant="filled">
-                {message}
-                </Alert>
-
+    const errorMessage = () => {
+        if (showError) {
+            return (
+                <Collapse in={open}>
+                    <Alert severity="error"
+                    action={
+                        <IconButton
+                        aria-label="close"
+                        color="inherit"
+                        size="small"
+                        onClick={() => {
+                            setOpen(false);
+                        }}
+                        >
+                        <Cancel/>
+                        </IconButton>
+                    }
+                    >
+                    {message}
+                    </Alert>
+                </Collapse>
             )
         }
         if (showSucces) {
             return (
-                <div>
-                <Alert severity="success" icon={false} variant="filled">
-                {message}
-                </Alert>
-                </div>
+                    <Alert severity="success" >
+                        {message}
+                    </Alert>
             )
+        };
+    }
+    const redirrectionFunction = () => {
+            window.location.pathname="/login"
+    }
+    const handleChangePassword = async (values) => {
+        const { oldPassword, newPassword } = values;
+        try {
+            const statusCode = await handleAuthChangePassword(oldPassword, newPassword);
+            setShowError(false);
+            setShowSuccess(true);
+            setMessage(statusCode);
+            handleLogout();
+            setTimeout(redirrectionFunction, 2500);
+        } catch (err) {
+            console.log(err.response.data.message);
+            if (err.response && err.response.status === 401) {
+                setShowError(true);
+            }
+            if (err.response && err.response.status !== 200) {
+                setShowError(true);
+            }
+            else {
+                throw err;
+            }
+            setMessage(err.response.data.message);
+        }
     };
-    }
-    const handleChangePassword=async(values)=>{
-    const {oldPassword,newPassword}=values;
-    try{
-        const statusCode=await handleAuthChangePassword(oldPassword,newPassword);
-        //if(statusCode=="success")
-        //     showToast('success',message);
-        //     {handleLogout};
-        // else if(statusCode=="error"){
-        //     showToast('error',message);}
-        setShowError(false);
-        setShowSuccess(true);
-        setMessage(statusCode);
-        //setTimeout(handleLogout, 2000);
-        // console.log(statusCode + "" + showSucces);
-    } catch(err){
-        console.log(err.response.data.message);
-        if(err.response && err.response.status===401){
-            setShowError(true);
-        }
-        if(err.response && err.response.status!=200){
-            setShowError(true);
-        }
-        else{
-            throw err;
-        }
-        setMessage(err.response.data.message);
-            
-    }
-   };
-   return{
-    errorMessage:errorMessage,
-    handleChangePassword:handleChangePassword
-   };
+    return {
+        errorMessage: errorMessage,
+        handleChangePassword: handleChangePassword
+    };
 };

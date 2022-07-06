@@ -23,6 +23,11 @@ export default () => {
         setIsAuthenticated(false);
     };
 
+    const redirect = () => {
+        setIsAuthenticated(false);
+        
+    }
+
     const handleAuthChangePassword = async(oldPassword,newPassword,confirmPassword)=>{
         const statusCode= await changePassword(oldPassword,newPassword,confirmPassword);
         setIsAuthenticated(true);

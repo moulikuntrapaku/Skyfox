@@ -2,15 +2,24 @@ import {makeStyles} from "@material-ui/core/styles";
 
 export default makeStyles((theme) =>
     ({
-         profileContainer: {
-             justifyContent: "left",
+    
+        profileContainer: {
+            justifyContent: "center",
             padding: "20px 40px"
-        },
+       },
+       formTitle:{
+            justifyContent: "left",
+            padding: "20px 20px"
+       },
+
+        pageContainer: {
+            display: "flex",
+            justifyContent: "left-left",
+       },
         changePasswordContainer:{
             display: "flex",
             position:"center",
             justifyContent: "center",
-            padding: "5px 5px",
             width:"500px"
 
         },
@@ -18,7 +27,6 @@ export default makeStyles((theme) =>
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            padding: "5px 5px",
             width: "100%"
         },
         changePasswordErrorMessage: {
@@ -27,17 +35,20 @@ export default makeStyles((theme) =>
         },
         popupCloseButton:{
             justifyContent: "right",
+            justifyContent: "space-between",
+            padding: "10px"
         },
         submitChangePasswordButton: {
             justifyContent: "left",
-            margin: "5px 5px 10px 5px",
-            width: "200px"
+            margin: "5px 5px 10px 0px",
+            width: "37%"
         },
         line: {
-            width: "100%"
+            width: "80%"
         },
         toastMessage: {
-            width: "40%"
+            width: "100%"
+
         },
         errorMeaasge:{
             color:"red"

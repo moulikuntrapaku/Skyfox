@@ -1,4 +1,5 @@
 import {makeStyles} from "@material-ui/core";
+import { common } from "@material-ui/core/colors";
 
 export default makeStyles((theme) => ({
         headerLink: {
@@ -11,8 +12,7 @@ export default makeStyles((theme) => ({
             display: 'flex',
             justifyContent: "flex-start",
             alignItems: "center",
-            cursor: "pointer",
-            paddingLeft:"20px"
+            cursor: "pointer"
         },
         profileLink: {
             display: 'flex',
@@ -31,11 +31,12 @@ export default makeStyles((theme) => ({
         },
         headerLogo: {
             marginLeft: '0.15em'
+
         },
         toolbar: {
             display: 'flex',
             justifyContent: "space-between",
-            padding: "0 4em"
+            padding: "0 2em"
         },
         cartButton: {
             color: "white",
@@ -44,6 +45,15 @@ export default makeStyles((theme) => ({
         headerActions: {
             display:"flex",
             height:"100%"
+        },
+        profilediv: {
+            display: "flex",
+            justifyContent: "centre",
+            alignItems: "centre"
+        },
+        commonDiv: {
+            display: "flex",
+            justifyContent: "centre"
         }
     })
 );

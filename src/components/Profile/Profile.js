@@ -11,6 +11,7 @@ import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import useAuth from "../layout/hooks/useAuth";
+import { Redirect } from "react-router-dom";
 const Profile = () => {
   const classes = styles();
   const username=getUsername();
@@ -28,10 +29,11 @@ const Profile = () => {
    return (
   <>
     <div className={classes.profileContainer}>
-      <Typography variant="h5">User Profile</Typography>
+      <Typography variant="h5" style={{fontWeight: 'bold'}}>User Profile</Typography>
       <br/>
-      <Typography variant="body1"> name: Admin</Typography>
-      <Typography variant="body1"> username: {username}</Typography>
+      <Typography variant="body1"> Name: Admin</Typography>
+      <Typography variant="body1"> Username: {username}</Typography>
+      <br/>
       <br/>
       <Button
         variant="contained"
@@ -41,14 +43,12 @@ const Profile = () => {
       </Button>
       <Dialog open={open} onClose={handleCloseChangePasswordPopup}>
         <Button className={classes.popupCloseButton}
-          onClick={handleCloseChangePasswordPopup}><Cancel /></Button>
-        <DialogTitle>&nbsp;Change Password </DialogTitle>
+          onClick={handleCloseChangePasswordPopup}><h2 className={classes.formTitle}>Change Password</h2><Cancel /></Button>
         <DialogContent>
           <div className={classes.changePasswordContainer}>
                 <Formik initialValues={initialValues}
                         onSubmit={handleChangePassword}
-                        validationSchema={formSchema}>
-                    {
+                        validationSchema={formSchema}>{
                         (props) => {
                             const {
                                 isValid,
@@ -127,15 +127,16 @@ const Profile = () => {
                         }
                   </Formik>
               </div>
+              <div className={classes.toastMessage} >
+                {
+                    errorMessage()
+                  }
+                </div>
         </DialogContent>
       </Dialog>
+      
+    </div>
                                     
-    </div>
-    <div className={classes.toastMessage}>
-     {
-        errorMessage()
-      }
-    </div>
                                    
     </>
    );
