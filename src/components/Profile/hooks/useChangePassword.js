@@ -71,4 +71,4 @@ export default (handleAuthChangePassword) => {
         errorMessage: errorMessage,
         handleChangePassword: handleChangePassword
     };
-};
+}; 

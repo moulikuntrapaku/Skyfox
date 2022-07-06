@@ -3,9 +3,9 @@ fileignoreconfig:
   checksum: fbf08d3f2f76031ac28ca5cb7c65294ba0d4de6c07d9f248f69e9dc9a417b69f
   ignore_detectors: [filename]
 - filename: yarn.lock
-  checksum: 9dcb74d10cb54afa53a5db589d6b06e945f4221c1b96b646503ddd28b49b5a57
+  checksum: 10faa1e0d5b3246940509b517d7fa0f6307e3c62bfc4f3b62fc1b208a295ae6e
 - filename: src/components/layout/hooks/useAuth.js
-  checksum: bc3a411d540ea88051b76cd7a561f123052c262113ad36dd570cde0d0b2d54a1
+  checksum: 7e56b42c8f723a9fcd01ce82e2ddca778a4054e8ff363ef050a018b078cd91e7
 - filename: src/components/Profile/Profile.js
   checksum: cf9649e79302deae4dece96af1201a071e1fd9c5355d21eaf1acb7c75d91bb1a
 - filename: package.json
