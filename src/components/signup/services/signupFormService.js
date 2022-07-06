@@ -17,7 +17,9 @@ export const formSchema = object({
     username: string("Enter username")
         .required("Username is required"),
     email: string("Enter email")
-        .required("Email is required"),
+        .required("Email is required")
+        .matches(/[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/,"Enter valid email id"),
+       
     mobileNumber: string("Enter Mobile Number")
         .required("Mobile no is required")
         .matches(/^\d{10}$/, "Enter valid phone number"),
