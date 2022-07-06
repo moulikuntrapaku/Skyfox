@@ -10,7 +10,9 @@ export default makeStyles((theme) =>
         signUpForm: {
             display: "flex",
             flexDirection: "column",
-            width: "30%"
+            minWidth: "300 px",
+            maxWidth: "500 px"
+            
         },
         signUpButton: {
             marginTop: "10%",
