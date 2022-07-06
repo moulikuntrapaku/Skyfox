@@ -15,11 +15,11 @@ export const formSchema = object({
     name: string("Enter name")
         .required("Name is required"),
     username: string("Enter username")
-        .required("Username is required"),
+        .required("Username is required")
+        .matches(/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,64}[a-zA-Z0-9]$/,"Username Should be valid"),
     email: string("Enter email")
         .required("Email is required")
-        .matches(/[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/,"Enter valid email id"),
-       
+        .matches(/^[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,20}[\.][a-z]{2,5}$/,"Enter valid email id"),
     mobileNumber: string("Enter Mobile Number")
         .required("Mobile no is required")
         .matches(/^\d{10}$/, "Enter valid phone number"),
@@ -27,8 +27,9 @@ export const formSchema = object({
         .required("Password is required")
         .matches(/(?=.*?[A-Z])/,"Password should contain atleast one Uppercase")
         .matches(/(?=.*?[0-9])/,"Password should contain atleast one digit")
-        .matches(/(?=.*?[#?!@$%^&*-+=])/,"Password should contain atleast one special character")
-        .matches(/^.{8,64}$/,"Password should be of minimum 8 characters and maximum 64 characters"),
+        .matches(/(?=.*?[#?!@$%^&*-])/,"Password should contain  atleast one special character")
+        .matches(/^.{8,64}$/,"Password should be of minimum 8 characters and maximum 64 characters")
+        .matches( /^\S*$/,"No Whitespace allowed"),
     confirmPassword: string("Enter confirm password")
         .required("Confirm Password is required")
 });

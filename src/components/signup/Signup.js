@@ -58,6 +58,7 @@ const Signup=(props)=>{
                                         required
                                         margin="dense"
                                         name="email"
+                                        type="email"
                                         label="Email"
                                     />
                                     <FormikTextField

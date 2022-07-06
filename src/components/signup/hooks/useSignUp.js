@@ -22,12 +22,14 @@ export default (onSignUp) => {
             return (
                 <Alert severity="success">
                     {message}
-                    <Redirect to = '/login' />
+                    {/* <Redirect to = '/login' /> */}
                 </Alert>
             ) 
         }
     };
- 
+    const redirrectionFunction = () => {
+        window.location.pathname="/login"
+    }
 
     const handleSignUp = async (values) => {
         const {name,username,email,mobileNumber, password,confirmPassword} = values;
@@ -36,6 +38,7 @@ export default (onSignUp) => {
             setShowError(false);
             setShowSuccess(true);
             setMessage(status);
+            setTimeout(redirrectionFunction, 2500);
             
         } catch (err) {
             console.log(err.response.data.message);
