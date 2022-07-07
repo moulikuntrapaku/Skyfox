@@ -1,4 +1,5 @@
-import {object, string} from "yup";
+import {object, string, ref} from "yup";
+
 
 export const initialValues = {
     oldPassword: '', 
@@ -17,10 +18,5 @@ export const formSchema = object({
         .required("Password is required"),
     confirmPassword: string("confirm password")
         .required("Confirm Password is required")
+        .oneOf([ref("newPassword"),null],'ConfirmPassword doesnt match with Password'),
 });
-export const validateConfirmPassword = values => {
-    if (values.confirmPassword!=="" && values.newPassword!==values.confirmPassword) {
-      return 'Current Password doesnt match with Password';
-    }
-return null;
-};

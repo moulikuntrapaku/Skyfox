@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import { Button, Dialog, DialogContent, DialogTitle, Typography } from "@material-ui/core";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@material-ui/core";
 import styles from "./styles/profileStyles";
-import Cancel from '@material-ui/icons/Cancel';
 import { Formik,Form } from "formik";
 import {FormikTextField} from "../formik";
 import { getUsername } from "../../helpers/authService";
@@ -11,8 +10,10 @@ import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import useAuth from "../layout/hooks/useAuth";
-import { Redirect } from "react-router-dom";
-const Profile = () => {
+
+import CloseIcon from '@material-ui/icons/Close';
+ 
+  const Profile = () => {
   const classes = styles();
   const username=getUsername();
   const {handleAuthChangePassword}=useAuth();
@@ -26,6 +27,8 @@ const Profile = () => {
   const handleClickShowConfirmPassword = ()=>setShowConfirmPassword(!showConfirmPassword);
   const handleOpenChangePasswordPopup = () => {setOpen(true)};
   const handleCloseChangePasswordPopup = () => {setOpen(false)};
+
+
    return (
   <>
     <div className={classes.profileContainer}>
@@ -42,8 +45,18 @@ const Profile = () => {
         Change Password
       </Button>
       <Dialog open={open} onClose={handleCloseChangePasswordPopup}>
-        <Button className={classes.popupCloseButton}
-          onClick={handleCloseChangePasswordPopup}><h2 className={classes.formTitle}>Change Password</h2><Cancel /></Button>
+            <DialogTitle className={classes.dialogTitle}>
+                <div style={{ display: 'flex' }}>
+                    <Typography variant="h5" style={{fontWeight: 'bold', flexGrow: 1}} component="div" >
+                        Change Password
+                    </Typography>
+                    <DialogActions
+                        color="secondary"
+                        onClick={handleCloseChangePasswordPopup}>
+                        <CloseIcon />
+                    </DialogActions>
+                </div>
+            </DialogTitle>
         <DialogContent>
           <div className={classes.changePasswordContainer}>
                 <Formik initialValues={initialValues}
@@ -112,7 +125,7 @@ const Profile = () => {
                                           )
                                         }}
                                     />
-                                    {validateConfirmPassword(props.values) && <p className={classes.errorMeaasge}>{validateConfirmPassword(props.values)}</p>}
+
                                      <br/>
                                      <Button
                                      type="submit"
@@ -127,6 +140,7 @@ const Profile = () => {
                         }
                   </Formik>
               </div>
+              <br/>
               <div className={classes.toastMessage} >
                 {
                     errorMessage()

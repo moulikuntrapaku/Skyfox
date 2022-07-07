@@ -85,7 +85,4 @@ const authBasic = (username, password) => {
     return window.btoa(username + ':' + password);
 }
 
-const authBasicChangePassword = (oldPassword,newPassword,confirmPassword) => {
-    return window.btoa(oldPassword + ':' + newPassword + ':' + confirmPassword);
-}
 

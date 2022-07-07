@@ -33,11 +33,11 @@ export default makeStyles((theme) =>
             marginTop: "8px",
             display:"inline"
         },
-        popupCloseButton:{
-            justifyContent: "right",
-            justifyContent: "space-between",
-            padding: "10px"
-        },
+        // popupCloseButton:{
+        //     justifyContent: "right",
+        //     justifyContent: "space-between",
+        //     padding: "10px"
+        // },
         submitChangePasswordButton: {
             justifyContent: "left",
             margin: "5px 5px 10px 0px",

@@ -1,10 +1,7 @@
 import React, {useState} from "react";
 import Alert from "@material-ui/lab/Alert/Alert";
 
-
-
 export default (onSignUp) => {
-
     const [showError, setShowError] = useState(false);
     const [message, setMessage] = useState();
     const [showSucces, setShowSuccess] = useState(false);
