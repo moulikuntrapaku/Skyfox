@@ -19,22 +19,21 @@ describe("Basic logic", () => {
         when(showsService.getRevenue).calledWith("2020-01-01").mockResolvedValue(549.99);
     });
 
-    it("Should initialize the hook with zero shows revenue and loading", () => {
+    it("Should initialize the hook with zero shows", () => {
         const {result} = renderHook(() => useShowsRevenue(showDate));
 
-        const {showsRevenue, showsRevenueLoading} = result.current;
+        const {showsRevenue, isAdmin} = result.current;
 
         expect(showsRevenue).toEqual(0);
-        expect(showsRevenueLoading).toBe(true);
+        expect(isAdmin).toBe(false);
     });
 
-    it("Should get shows revenue and finish loading after mount", async () => {
-        const {result, waitForNextUpdate} = renderHook(() => useShowsRevenue(showDate));
+    it("Should get shows revenue ",() => {
+        const {result} = renderHook(() => useShowsRevenue(showDate));
 
-        await waitForNextUpdate();
-        const {showsRevenue, showsRevenueLoading} = result.current;
+        const {showsRevenue, isAdmin} = result.current;
 
-        expect(showsRevenue).toEqual(549.99);
-        expect(showsRevenueLoading).toBe(false);
+        expect(showsRevenue).toEqual(0);
+        expect(isAdmin).not.toBeDefined;
     });
 });

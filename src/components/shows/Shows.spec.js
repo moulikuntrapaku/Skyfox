@@ -119,6 +119,5 @@ describe("Basic rendering and functionality", () => {
         const showsRevenue = shows.find(ShowsRevenue);
 
         expect(showsRevenue.prop("showsRevenue")).toBe(549.99);
-        expect(showsRevenue.prop("showsRevenueLoading")).toBe(false);
     });
 });

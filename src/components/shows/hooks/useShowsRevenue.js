@@ -1,9 +1,10 @@
 import {useEffect, useState} from "react";
 import {QUERY_DATE_FORMAT} from "../../../Constants";
 import showsService from "../services/showsService";
+import {getUserRole} from "../../../helpers/authService"
 
 const useShowsRevenue = (showsDate) => {
-    const [showsRevenueLoading, setShowsRevenueLoading] = useState(true);
+    const [isAdmin,setIsAdmin] = useState(false);
     const [showsRevenue, setShowsRevenue] = useState(0);
 
     useEffect(() => {
@@ -15,7 +16,7 @@ const useShowsRevenue = (showsDate) => {
         const formattedDate = showsDate.format(QUERY_DATE_FORMAT);
 
         showsService.getRevenue(formattedDate).then(showsRevenue => {
-            setShowsRevenueLoading(false);
+            setIsAdmin(getUserRole);
             setShowsRevenue(showsRevenue);
         });
     };
@@ -23,7 +24,7 @@ const useShowsRevenue = (showsDate) => {
     return {
         showsRevenue: showsRevenue,
         updateShowsRevenue: updateShowsRevenue,
-        showsRevenueLoading: showsRevenueLoading
+        isAdmin: isAdmin
     };
 };
 

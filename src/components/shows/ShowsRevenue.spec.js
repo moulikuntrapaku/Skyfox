@@ -6,17 +6,19 @@ import {CircularProgress} from "@material-ui/core";
 
 describe("Basic rendering", () => {
 
-    it("Should show revenue if not loading", () => {
-        const showsRevenue = render(<ShowsRevenue showsRevenue={549.99} showsRevenueLoading={false}/>);
+    it("Should show revenue if Admin", () => {
+        const showsRevenue = shallow(<ShowsRevenue showsRevenue={549.99} isAdmin={true}/>);
 
-        showsRevenue.getByText("Revenue: ₹549.99");
+        const revenue = showsRevenue.find(ShowsRevenue);
+
+        expect(revenue).toBeDefined;
     });
 
-    it("Should display spinner if loading", () => {
-        const showsRevenue = shallow(<ShowsRevenue showsRevenue={0} showsRevenueLoading={true}/>);
+    it("Should not show revenue if Customer", () => {
+        const showsRevenue = shallow(<ShowsRevenue showsRevenue={0} isAdmin={false}/>);
 
-        const circularProgress = showsRevenue.find(CircularProgress);
+        const revenue = showsRevenue.find(ShowsRevenue);
 
-        expect(circularProgress.length).toBe(1);
+        expect(revenue).not.toBeDefined;
     });
 });

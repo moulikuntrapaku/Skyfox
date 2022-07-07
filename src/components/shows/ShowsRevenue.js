@@ -1,34 +1,28 @@
 import React from "react";
-import {CircularProgress, Typography} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import styles from "./styles/showsRevenueStyles"
 import PropTypes from "prop-types";
 import {INR_SYMBOL} from "../../Constants";
 
-const ShowsRevenue = ({showsRevenue, isAuthenticated,showsRevenueLoading}) => {
+const ShowsRevenue = ({showsRevenue,isAdmin}) => {
     const classes = styles();
     // Todo
-    if(isAuthenticated === "ADMIN"){
     return (
         <>
             {
-                showsRevenueLoading
+                isAdmin
                     ? (
-                        <div className={classes.showsRevenueLoadingSpinner}>
-                            <CircularProgress color="primary"/>
-                        </div>
+                        <Typography variant="h5" color="secondary" className={classes.showsRevenueContainer}>
+                        Revenue: {`${INR_SYMBOL}${showsRevenue}`}
+                        </Typography>
                     )
                     : (
-                        <Typography variant="h5" color="secondary" className={classes.showsRevenueContainer}>
-                            Revenue: {`${INR_SYMBOL}${showsRevenue}`}
-                        </Typography>
+                          <div>
+                          </div>
                     )
             }
         </>
     );
-    }
-    else{
-        return(<> </>);
-    }
 };
 
 ShowsRevenue.propTypes = {
