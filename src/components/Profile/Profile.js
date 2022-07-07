@@ -53,7 +53,7 @@ import CloseIcon from '@material-ui/icons/Close';
                     <DialogActions
                         color="secondary"
                         onClick={handleCloseChangePasswordPopup}>
-                        <CloseIcon />
+                        <CloseIcon style={{ cursor: 'pointer' }}/>
                     </DialogActions>
                 </div>
             </DialogTitle>
