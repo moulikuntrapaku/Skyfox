@@ -34,7 +34,7 @@ import CloseIcon from '@material-ui/icons/Close';
     <div className={classes.profileContainer}>
       <Typography variant="h5" style={{fontWeight: 'bold'}}>User Profile</Typography>
       <br/>
-      <Typography variant="body1"> Name: Admin</Typography>
+      <Typography variant="body1"> Name: {username}</Typography>
       <Typography variant="body1"> Username: {username}</Typography>
       <br/>
       <br/>
