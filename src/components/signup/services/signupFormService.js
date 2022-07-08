@@ -16,7 +16,7 @@ export const formSchema = object({
         .required("Name is required"),
     username: string("Enter username")
         .required("Username is required")
-        .matches(/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,64}[a-zA-Z0-9]$/,"Username Should be valid"),
+        .matches(/^[A-Za-z][A-Za-z0-9]{2,64}$/,"Username should be alphanumeric and no whitespace allowed"),
     email: string("Enter email")
         .required("Email is required")
         .email(),
