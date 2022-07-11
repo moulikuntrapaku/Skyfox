@@ -1,17 +1,23 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Form, Formik} from "formik";
 import {FormikTextField} from "../formik";
 import {Button} from "@material-ui/core";
 import styles from "./styles/loginStyles"
 import PropTypes from "prop-types";
 import useLogin from "./hooks/useLogin";
+import {InputAdornment, IconButton } from "@material-ui/core";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import {formSchema, initialValues} from "./services/loginFormService";
+
 
 
 
 
 const Login = ({location, history, isAuthenticated, onLogin}) => {
     const classes = styles();
+    const [showPassword,setShowPassword]=useState(false);
+    const handleClickShowPassword = ()=>setShowPassword(!showPassword);
     const {from} = location.state || {from: {pathname: "/"}};
     const {errorMessage, handleLogin} = useLogin(onLogin);
     useEffect(() => { //usage?
@@ -42,10 +48,21 @@ const Login = ({location, history, isAuthenticated, onLogin}) => {
                                 />
                                 <FormikTextField
                                     required
-                                    type="password"
                                     margin="dense"
                                     name="password"
+                                    type={showPassword ? "test":"password"}
                                     label="Password"
+                                    InputProps={{
+                                        endAdornment: (
+                                          <InputAdornment position="end">
+                                            <IconButton
+                                              onClick={handleClickShowPassword}
+                                            >
+                                              {showPassword ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                          </InputAdornment>
+                                        )
+                                      }}
                                 />
                                 {
                                     errorMessage()
