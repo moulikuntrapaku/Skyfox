@@ -1,11 +1,13 @@
 import React ,{useEffect, useState}from "react";
-import {Button,Dialog, DialogActions, DialogContent, DialogTitle,Typography} from "@material-ui/core";
+import {Button,Checkbox,Dialog, DialogActions, DialogContent, DialogTitle,Typography} from "@material-ui/core";
 import styles from "../shows/styles/ScheduleShowStyles"
 import CloseIcon from '@material-ui/icons/Close';
 import moment from "moment";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
-function ScheduleShow({showsDate,isAdmin}) {
+function ScheduleShow({showsDate,isAdmin,shows}) {
+    console.log(shows);
     //console.log("ShowsDateshowsDate"+showsDate);
     const classes = styles();
     const [open, setOpen] = useState(false);
@@ -39,10 +41,8 @@ function ScheduleShow({showsDate,isAdmin}) {
                         <Button
                             variant="contained"
                             color="primary"
-                            disabled={showsDate<date}
-                            onClick={handleOpenScheduleMoviePopup}>
-                            SCHEDULE MOVIE
-                        </Button>
+                            // disabled={showsDate<date}
+                            onClick={handleOpenScheduleMoviePopup}>SCHEDULE MOVIE</Button>
                     )
                     : (
                           <div>
@@ -56,14 +56,25 @@ function ScheduleShow({showsDate,isAdmin}) {
                  <Typography variant="h5" style={{fontWeight: 'bold', flexGrow: 1}} component="div" >
                      Schedule Movie
                  </Typography>
-                 <DialogActions
+                 {/* <DialogActions
                      color="secondary"
                      onClick={handleCloseScheduleMoviePopup}>
                      <CloseIcon style={{ cursor: 'pointer' }}/>
-                 </DialogActions>
+                 </DialogActions> */}
+            </div>
+            <div>
                  <DialogContent>
+                 <div>
                  <h2>Slots</h2>
-                 <h2>Cost</h2>
+                 {shows.map(show => (
+                    <div>
+{/* <Checkbox>{show.slot.startTime}</Checkbox> */}
+<FormControlLabel control={<Checkbox value="checkedC" />} label={show.slot.startTime+" - "+show.slot.endTime} />
+
+                    </div>
+                 ))}
+                 {/* <h2>Cost</h2> */}
+                 </div>
                  </DialogContent>
              </div>
          </DialogTitle>

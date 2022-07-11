@@ -18,8 +18,8 @@ export default makeStyles((theme) =>
        },
         changePasswordContainer:{
             display: "flex",
-            position:"center",
-            justifyContent: "center",
+            position:"left",
+            justifyContent: "left",
             width:"500px"
 
         },
