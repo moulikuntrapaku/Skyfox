@@ -49,28 +49,35 @@ export default (handleAuthChangePassword) => {
    }
     const handleChangePassword = async (values) => {
         const { oldPassword, newPassword } = values
-        try {
-            const statusCode = await handleAuthChangePassword(oldPassword, newPassword);
-            setShowError(false);
-            setShowSuccess(true);
-            setMessage(statusCode);
-            handleLogout();
-            setTimeout(redirrectionFunction, 2500);
-        } catch (err) {
-            console.log(err.response.data.message);
-            if (err.response && err.response.status === 401) {
-                setShowError(true);
-                setTimeout(closeErrorMessage, 2500);
-            }
-            if (err.response && err.response.status !== 200) {
-                setShowError(true);
-                setTimeout(closeErrorMessage, 2500);
-            }
-            else {
-                throw err;
-            }
-            setMessage(err.response.data.message);
+        if(oldPassword===newPassword){
+            setShowError(true);
+            setMessage("New Password can not be same as Current Password");
+            setTimeout(closeErrorMessage, 2500);
         }
+        else{
+            try {
+                const statusCode = await handleAuthChangePassword(oldPassword, newPassword);
+                setShowError(false);
+                setShowSuccess(true);
+                setMessage(statusCode);
+                handleLogout();
+                setTimeout(redirrectionFunction, 2500);
+            } catch (err) {
+                console.log(err.response.data.message);
+                if (err.response && err.response.status === 401) {
+                    setShowError(true);
+                    setTimeout(closeErrorMessage, 2500);
+                }
+                if (err.response && err.response.status !== 200) {
+                    setShowError(true);
+                    setTimeout(closeErrorMessage, 2500);
+                }
+                else {
+                    throw err;
+                }
+                setMessage(err.response.data.message);
+            }
+      }
     };
     return {
         errorMessage: errorMessage,
