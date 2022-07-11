@@ -19,6 +19,7 @@ import ShowsRevenue from "./ShowsRevenue";
 import useShowsRevenue from "./hooks/useShowsRevenue";
 import SeatSelectionDialog from "./SeatSelectionDialog";
 import PosterShowDialog from "./PosterShowDialog";
+import ScheduleShow from "./ScheduleShow";
 
 export default ({location, history}) => {
     const classes = styles();
@@ -58,6 +59,7 @@ export default ({location, history}) => {
                 <Typography variant="h4" className={classes.showsHeader}>
                     Shows ({showsDate.format(HEADER_DATE_FORMAT)})
                 </Typography>
+                <ScheduleShow showsDate={showsDate.format(HEADER_DATE_FORMAT)} isAdmin={isAdmin}></ScheduleShow>
                 <ShowsRevenue showsRevenue={showsRevenue} isAdmin={isAdmin}/>
             </div>
             <List className={classes.listRoot}>
