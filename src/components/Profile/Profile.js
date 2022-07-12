@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@material-ui/core";
 import styles from "./styles/profileStyles";
 import { Formik,Form } from "formik";
@@ -10,8 +10,8 @@ import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import useAuth from "../layout/hooks/useAuth";
-
 import CloseIcon from '@material-ui/icons/Close';
+import { customer,getUserRole } from "../../helpers/authService"; 
  
   const Profile = () => {
   const classes = styles();
@@ -27,6 +27,16 @@ import CloseIcon from '@material-ui/icons/Close';
   const handleClickShowConfirmPassword = ()=>setShowConfirmPassword(!showConfirmPassword);
   const handleOpenChangePasswordPopup = () => {setOpen(true)};
   const handleCloseChangePasswordPopup = () => {setOpen(false)};
+  const [data,setData]=useState({});
+  const [isAdmin,setIsAdmin] = useState(false);
+
+
+  useEffect(() => {
+    customer().then(response=>{
+      setData(response.data);
+    }) 
+
+  },[]);
 
 
    return (
@@ -34,8 +44,10 @@ import CloseIcon from '@material-ui/icons/Close';
     <div className={classes.profileContainer}>
       <Typography variant="h5" style={{fontWeight: 'bold'}}>User Profile</Typography>
       <br/>
-      <Typography variant="body1"> Name: {username}</Typography>
+      <Typography variant="body1"> Name: {data.name}</Typography>
       <Typography variant="body1"> Username: {username}</Typography>
+      <Typography variant="body1"> Email: {data.email}</Typography>
+      <Typography variant="body1"> Mobile Number: {data.phoneNumber} </Typography>
       <br/>
       <br/>
       <Button
