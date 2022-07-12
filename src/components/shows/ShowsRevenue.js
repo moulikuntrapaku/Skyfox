@@ -6,6 +6,7 @@ import {INR_SYMBOL} from "../../Constants";
 
 const ShowsRevenue = ({showsRevenue,isAdmin}) => {
     const classes = styles();
+    console.log(isAdmin);
     // Todo
     return (
         <>

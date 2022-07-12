@@ -11,11 +11,12 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import useAuth from "../layout/hooks/useAuth";
 import CloseIcon from '@material-ui/icons/Close';
-import { customer,getUserRole } from "../../helpers/authService"; 
- 
+import useProfile from "./hooks/useProfile";
+
   const Profile = () => {
   const classes = styles();
   const username=getUsername();
+  const { profile, profileLoading } = useProfile();
   const {handleAuthChangePassword}=useAuth();
   const [open, setOpen] = useState(false);
   const {errorMessage,handleChangePassword}=useChangePassword(handleAuthChangePassword);
@@ -28,26 +29,49 @@ import { customer,getUserRole } from "../../helpers/authService";
   const handleOpenChangePasswordPopup = () => {setOpen(true)};
   const handleCloseChangePasswordPopup = () => {setOpen(false)};
   const [data,setData]=useState({});
-  const [isAdmin,setIsAdmin] = useState(false);
 
-
-  useEffect(() => {
-    customer().then(response=>{
-      setData(response.data);
-    }) 
-
-  },[]);
 
 
    return (
   <>
     <div className={classes.profileContainer}>
-      <Typography variant="h5" style={{fontWeight: 'bold'}}>User Profile</Typography>
-      <br/>
-      <Typography variant="body1"> Name: {data.name}</Typography>
-      <Typography variant="body1"> Username: {username}</Typography>
-      <Typography variant="body1"> Email: {data.email}</Typography>
-      <Typography variant="body1"> Mobile Number: {data.phoneNumber} </Typography>
+       <div>
+      {profile.Role === "ADMIN" ? (
+            <>
+              {" "}
+              <Typography variant="h5" className={classes.userHeading}>
+                Admin Profile
+                <br></br>
+              </Typography>
+              <Typography variant="body1" className={classes.content}>
+                Username: {profile.username}
+              </Typography>
+            </>
+          ) : (
+            <>
+              {" "}
+              <Typography variant="h5" className={classes.userHeading}>
+                User Profile
+                <br></br>
+              </Typography>
+              <Typography variant="body1" className={classes.content}>
+                Name: {profile.name}
+              </Typography>
+              <Typography variant="body1" className={classes.content}>
+                Username: {profile.username}
+              </Typography>
+              <Typography variant="body1" className={classes.content}>
+                Email: {profile.email}
+              </Typography>
+              <Typography variant="body1" className={classes.content}>
+                Phone Number: {profile.phone_number}
+              </Typography>
+               
+            </>
+          )}
+      </div>
+
+      
       <br/>
       <br/>
       <Button

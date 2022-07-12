@@ -24,22 +24,17 @@ export const login = async (username, password) => {
     return userDetails;
 }
 
-export const customer = async ()=>{
-    const username = getUsername();
-    const token=localStorage.getItem(tokenKey);
+export const profile = async (username, password) => {
+    const token = authBasic(username, password);
     const config = {
         headers: {
-            Authorization: 'Basic ' + token, 
-            'Content-Type':'application/json',
-        },
-        params: { username:username },
-    }; 
-   
-   return await axios.get(`${urls.service}/customer`,config);
-    // const customerDetails = response.then();
-    // console.log(customerDetails);
-    // return customerDetails;
-
+            Authorization: 'Basic ' + token
+        }
+    };
+    const response = await axios.get(`${urls.service}/profile`, config);
+    const userDetails = response.data;
+    localStorage.setItem(tokenKey, token)
+    return userDetails;
 }
 
 export const signup = async (name,username,email,mobileNumber,password) => {
@@ -71,7 +66,16 @@ export const getUsername=() =>{
 }
 
 export const getUserRole= async () =>{
-    const response = await axios.get(`${urls.service}/user`);
+    const token=localStorage.getItem(tokenKey);
+    console.log("token"+token);
+    const config = {
+        headers: {
+            Authorization: 'Basic ' + token, 
+            'Content-Type':'application/json'
+        }
+    }; 
+    const response = await axios.get(`${urls.service}/user`, config);
+   
     return response.data["role"]==="ADMIN";
 }
 
