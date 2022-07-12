@@ -3,12 +3,15 @@ import {shallow} from "enzyme";
 import ScheduleShow from "./ScheduleShow";
 import {render,fireEvent} from "@testing-library/react";
 import {screen} from '@testing-library/dom'
+import moment from "moment";
 
 describe("Basic rendering",()=>{
 
     const openDialog = true;
     const onClose = jest.fn();
     const updateShowRevenue = jest.fn();
+    const showsDate=moment();
+
 
     const shows = [{
         id: 1,
@@ -34,14 +37,16 @@ describe("Basic rendering",()=>{
     }];
 
     it("Should show Schedule Movie Button if Admin", () => {
-        const scheduleShow = shallow(<ScheduleShow isAdmin={true} shows={shows}/>);
+        const scheduleShow = shallow(<ScheduleShow showsDate={showsDate} isAdmin={true} shows={shows}/>);
 
         let scheduleMovieButton=scheduleShow.find(ScheduleShow);
 
         expect(scheduleMovieButton).toBeDefined;
     });
+
+
     it("Should not show Schedule Movie if Customer", () => {
-        const scheduleShow = shallow(<ScheduleShow isAdmin={false} shows={shows}/>);
+        const scheduleShow = shallow(<ScheduleShow showsDate={showsDate} isAdmin={false} shows={shows}/>);
 
         const scheduleMovieButton = scheduleShow.find(ScheduleShow);
 
@@ -56,7 +61,7 @@ describe("Basic rendering",()=>{
     //     expect(checklist).toBeDefined;
     // });
     it("Should display schedule movie when scheduled movie button is clicked", () => {
-        const {getByText, queryByText} = render(<ScheduleShow isAdmin={true} shows={shows}/>);
+        const {getByText, queryByText} = render(<ScheduleShow showsDate={showsDate} isAdmin={true} shows={shows}/>);
 
         expect(queryByText("Slots")).toBeNull();
 

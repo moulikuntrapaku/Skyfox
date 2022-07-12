@@ -8,31 +8,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 function ScheduleShow({showsDate,isAdmin,shows}) {
     console.log(shows);
-    //console.log("ShowsDateshowsDate"+showsDate);
     const classes = styles();
     const [open, setOpen] = useState(false);
-    const [disableValue,setDisableValue]=useState(false);
     const handleOpenScheduleMoviePopup = () => {setOpen(true)};
-    const handleCloseScheduleMoviePopup = () => {setOpen(false)};
-
-    // useEffect(()=>{
-    //     console.log(showsDate+"   "+date);
-    //     if(showsDate<date){
-    //         console.log("disbale");
-    //         setDisableValue(true);}
-    // })
-
-    
-    const dateLimit = showsDate;
-    const now = moment();
-    const date=now.toString();
-    console.log("now",now.toString()," ",dateLimit);
-
-    console.log("Dates: ",showsDate," ",date);
-    console.log("value: ",now.isAfter(dateLimit));
-    if(showsDate<date){
-        console.log("disable");
-    }
+    const handleCloseScheduleMoviePopup = () => {setOpen(false)};    
+    const todayDate = moment().startOf("day");
+  
     return (
         <div>
              {
@@ -41,7 +22,7 @@ function ScheduleShow({showsDate,isAdmin,shows}) {
                         <Button
                             variant="contained"
                             color="primary"
-                            // disabled={showsDate<date}
+                            disabled={showsDate.isBefore(todayDate)}
                             onClick={handleOpenScheduleMoviePopup}>SCHEDULE MOVIE</Button>
                     )
                     : (
