@@ -32,10 +32,10 @@ const Header = ({ onLogout, isAuthenticated}) => {
                   <Typography className={classes.headerLogo} variant="body1">
                    <div className={classes.profilediv}>
                    {profile.Role === "ADMIN" ? (
-                        <div>Welcome Admin</div>
+                        <div>Welcome, Admin!</div>
                      ):
                      (
-                       <div>Welcome {username}</div>
+                       <div>Welcome, {username}!</div>
                      )
                    }
                      <a href="/Profile"> <ProfileIcon style={{color:"white"}}/></a>
