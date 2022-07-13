@@ -62,7 +62,7 @@ export const isLoggedIn = () => {
 }
 
 export const getUsername=() =>{
-    return window.atob(localStorage.getItem(tokenKey)).split(":").at(0);
+    return window.atob(localStorage.getItem(tokenKey)).split(":")[0];
 }
 
 export const getUserRole= async () =>{

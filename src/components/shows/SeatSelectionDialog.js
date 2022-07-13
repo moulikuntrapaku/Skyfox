@@ -59,7 +59,7 @@ const SeatSelectionDialog = ({ selectedShow, updateShowsRevenue, open, onClose})
             date: today,
             showId: selectedShow.id,
             customer: {
-                name: getUsername(),
+                name: data.name,
                 phoneNumber:data.phoneNumber,
             },
             noOfSeats: seats
