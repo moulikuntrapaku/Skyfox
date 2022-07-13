@@ -1,6 +1,7 @@
 import React from "react";
 import {fireEvent, render} from "@testing-library/react";
 import SeatSelectionDialog from "./SeatSelectionDialog";
+import moment from "moment";
 
 jest.mock("./CustomerDetailsDialog", () => {
     return ({open}) => <div>Customer Details is {open ? "open" : "closed"}</div>
@@ -13,6 +14,7 @@ describe("Basic rendering and functionality", () => {
     const role="ADMIN";
     const selectedShow = {
         id: 1,
+        date: moment(),
         cost: 150,
         movie: {
             name: "Movie 1",
