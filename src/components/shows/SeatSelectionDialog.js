@@ -116,7 +116,7 @@ const SeatSelectionDialog = ({ selectedShow, updateShowsRevenue, open, onClose})
                                         {`${INR_SYMBOL}${(selectedShow.cost * seats).toFixed(2)}`}
                                     </Typography>
                                 </div>
-                                {role==="CUSTOMER" &&<div cvariant="caption" color="textSecondary">
+                                {!role &&<div cvariant="caption" color="textSecondary">
                                     <InputLabel id="paymentMode">Payment Mode</InputLabel>
                                     <Select
                                         
@@ -129,7 +129,7 @@ const SeatSelectionDialog = ({ selectedShow, updateShowsRevenue, open, onClose})
                                    
                                     </Select>
                                 </div>}
-                                {role=== "ADMIN" && <Button id="adminNext" variant="contained" color="primary"
+                                {role && <Button id="adminNext" variant="contained" color="primary"
                                     disabled={showTime.isBefore(currentTime)}
                                     onClick={() => {                                         
                                         setShowCustomerDetails(true);
@@ -138,7 +138,7 @@ const SeatSelectionDialog = ({ selectedShow, updateShowsRevenue, open, onClose})
                                     className={classes.dialogButton}>
                                     Next
                                 </Button>}
-                                {role === "CUSTOMER" && <Button  id="customerBook" variant="contained" color="primary"
+                                {!role && <Button  id="customerBook" variant="contained" color="primary"
                                     disabled={!isValid || showTime.isBefore(currentTime)} 
                                     onClick={bookShowForCustomer}
                                     className={classes.dialogButton}>
@@ -149,7 +149,7 @@ const SeatSelectionDialog = ({ selectedShow, updateShowsRevenue, open, onClose})
                     </div>
                 </div>
             </Dialog>
-            <CustomerDetailsDialog seats={seats} selectedShow={selectedShow} role={"ADMIN"} updateShowsRevenue={updateShowsRevenue}
+            <CustomerDetailsDialog seats={seats} selectedShow={selectedShow} role={true} updateShowsRevenue={updateShowsRevenue}
                 open={showCustomerDetails} onClose={() => {
                     handleClose();
                     setShowCustomerDetails(false)

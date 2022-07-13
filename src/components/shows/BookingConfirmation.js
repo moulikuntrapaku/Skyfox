@@ -18,7 +18,7 @@ const BookingConfirmation = ({bookingConfirmation, showConfirmation, role, data 
                 <a href="/"><CloseIcon style={{ cursor: 'pointer' ,margin:"10px 0px 0px 30px"}}/></a>
             </Typography>
                 
-           {role==="ADMIN" &&<DialogContent>
+           {role  &&<DialogContent>
                 <Typography variant="body1" display="block" gutterBottom>
                     Booking id : {bookingConfirmation.id}
                 </Typography>
@@ -39,7 +39,7 @@ const BookingConfirmation = ({bookingConfirmation, showConfirmation, role, data 
                 </Typography>
 
             </DialogContent>}
-            {role==="CUSTOMER" &&<DialogContent >
+            {!role &&<DialogContent >
                 <Typography variant="body1" display="block" gutterBottom>
                     Name: {bookingConfirmation.customerName}
                 </Typography>
@@ -65,7 +65,7 @@ const BookingConfirmation = ({bookingConfirmation, showConfirmation, role, data 
                     Show start time: {bookingConfirmation.startTime}
                 </Typography>
             </DialogContent>}
-            {role==="CUSTOMER" &&<Button
+            {!role &&<Button
               variant="contained"
               color='primary'
               onClick={() => ticketPdfGenerator(bookingConfirmation,selectedShow,paymentMode,data)}

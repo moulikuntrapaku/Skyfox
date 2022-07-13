@@ -79,10 +79,6 @@ export const getUserRole= async () =>{
     return response.data["role"]==="ADMIN";
 }
 
-export const getUserPassword=(username)=>{
-    
-}
-
 export const changePassword=async(oldPassword,newPassword) =>{
     const token=localStorage.getItem(tokenKey);
     console.log("token"+token);
@@ -92,6 +88,7 @@ export const changePassword=async(oldPassword,newPassword) =>{
             'Content-Type':'application/json'
         }
     }; 
+
     const payload={
         "userName":getUsername(),
         "oldPassword":oldPassword,

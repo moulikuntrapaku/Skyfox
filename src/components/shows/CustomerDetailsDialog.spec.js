@@ -42,6 +42,7 @@ describe("Basic rendering and functionality", () => {
     it("Should call booking service api to create booking on submit", async () => {
         const {getByTestId} = render(<CustomerDetailsDialog seats={"2"} selectedShow={selectedShow}
                                                             open={open}
+                                                            role={true}
                                                             onClose={onClose}
                                                             updateShowsRevenue={updateShowsRevenue}/>);
 
