@@ -49,14 +49,5 @@ describe("Basic rendering and functionality", () => {
         expect(queryByText("₹300.00")).toBeTruthy();
     });
 
-    it("Should display customer details input on next", () => {
-        const {getByText} = render(<SeatSelectionDialog selectedShow={selectedShow} open={openDialog}
-                                                        onClose={onClose}
-                                                        updateShowsRevenue={updateShowRevenue}/>);
-        const role="ADMIN";
-        expect(getByText("Customer Details is closed")).toBeTruthy();
-        //fireEvent.click(getByText("Next"));
-
-       // expect(getByText("Customer Details is open")).toBeTruthy();
-    });
+    
 });
