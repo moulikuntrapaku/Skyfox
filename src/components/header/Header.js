@@ -5,6 +5,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ProfileIcon from '@material-ui/icons/Person';
 import styles from "./styles/headerStyles";
 import PropTypes from "prop-types";
+import useProfile from "../Profile/hooks/useProfile";
 
 const Header = ({ onLogout, isAuthenticated}) => {
     const classes = styles();
@@ -21,7 +22,7 @@ const Header = ({ onLogout, isAuthenticated}) => {
             );
         }
     };
-    
+
     const profileSection = () => {
         if (isAuthenticated) {
             return (

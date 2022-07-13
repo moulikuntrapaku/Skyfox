@@ -8,7 +8,7 @@ import {Error} from "../common";
 import {Login, ProtectedRoute} from "../login";
 import PropTypes from "prop-types";
 import moment from "moment";
-import Profile from "../profile/Profile.js";
+import Profile from "../Profile/Profile.js";
 import Signup from "../signup/Signup.js"
 
 const RootRouter = ({isAuthenticated, onLogin,onSignUp}) => {
