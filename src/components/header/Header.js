@@ -21,6 +21,7 @@ const Header = ({ onLogout, isAuthenticated}) => {
             );
         }
     };
+    
     const profileSection = () => {
         if (isAuthenticated) {
             return (

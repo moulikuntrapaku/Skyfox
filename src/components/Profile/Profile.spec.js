@@ -15,31 +15,6 @@ jest.mock("./hooks/useProfile", () => ({
     default: jest.fn()
 }));
 
-describe("Basic rendering and functionality", () => {
-
-    beforeEach(() => {
-        when(useProfile).calledWith().mockReturnValue({
-            profileLoading: false,
-            profile:
-            {
-                id: 5,
-                name: "Tom",
-                username: "tom"
-            }
-        });
-    });
-
-    it("Should display profile info", () => {
-        const profile = render(<Profile />);
-
-        profile.getByText("User Profile");
-        profile.getByText("Name:Tom");
-        profile.getByText("Username:tom");
-
-    });
-});
-
-
 
 describe('Profile Service', () => {
 
