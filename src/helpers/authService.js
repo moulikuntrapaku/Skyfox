@@ -98,10 +98,22 @@ export const changePassword=async(oldPassword,newPassword) =>{
         "newPassword":newPassword
     }
     const response =await axios.put(`${urls.service}/user/password`,payload,config);
-    console.log(response);
     const statusCode = response.data;
     return statusCode;
 }
+
+export const customer = async ()=>{
+    const username = getUsername();
+    const token=localStorage.getItem(tokenKey);
+    const config = {
+        headers: {
+            Authorization: 'Basic ' + token, 
+            'Content-Type':'application/json',
+        },
+        params: { username:username },
+    }; 
+   
+   return await axios.get(`${urls.service}/customer`,config);}
 
 
 export const logout = () => {

@@ -30,7 +30,7 @@ describe("Basic rendering and functionality", () => {
     };
 
     it("Should display the show info", () => {
-        const {queryByText} = render(<CustomerDetailsDialog seats={"2"} selectedShow={selectedShow} open={open}
+        const {queryByText} = render(<CustomerDetailsDialog seats={"2"} selectedShow={selectedShow} open={open} role={"ADMIN"}
                                                             onClose={onClose}
                                                             updateShowsRevenue={updateShowsRevenue}/>);
 

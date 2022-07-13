@@ -54,6 +54,9 @@ export default makeStyles((theme) =>
         },
         dialogButton: {
             marginLeft: "15px"
+        },
+        paymentMode:{
+            padding:"10px 0px 0px 10px",
         }
     })
 );

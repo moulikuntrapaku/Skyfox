@@ -10,11 +10,11 @@ import {object, string} from "yup";
 import {Form, Formik} from "formik";
 import FormikTextField from "../formik/FormikTextField";
 import BookingConfirmation from "./BookingConfirmation";
-
-const CustomerDetailsDialog = ({seats, selectedShow, updateShowsRevenue, open, onClose}) => {
+const CustomerDetailsDialog = ({seats, selectedShow, updateShowsRevenue, role, open, onClose}) => {
     const [success, setSuccess] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [bookingConfirmation, setBookingConfirmation] = useState({});
+    
     const classes = styles();
 
     const initialValues = {
@@ -55,10 +55,10 @@ const CustomerDetailsDialog = ({seats, selectedShow, updateShowsRevenue, open, o
         }
     };
     return (
-      <>
+      <> 
             <Dialog open={open} onClose={onClose} maxWidth={false}>
                 <Typography variant="h6" className={classes.dialogHeader}>
-                    Enter Customer Details
+                   Enter Customer Details
                 </Typography>
                 <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={bookShow}>
                     {
@@ -95,9 +95,10 @@ const CustomerDetailsDialog = ({seats, selectedShow, updateShowsRevenue, open, o
                         }
                     }
                 </Formik>
+                
             </Dialog>
 
-            <BookingConfirmation bookingConfirmation={bookingConfirmation} showConfirmation={showConfirmation} />
+            <BookingConfirmation bookingConfirmation={bookingConfirmation}  role={role} showConfirmation={showConfirmation} />
 
             <Snackbar open={success === false} autoHideDuration={2000} onClose={() => setSuccess(null)}>
                 <Alert severity="error">

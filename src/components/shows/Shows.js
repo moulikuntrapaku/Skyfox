@@ -100,7 +100,6 @@ export default ({location, history}) => {
                     ))
                 }
             </List>
-
             <SeatSelectionDialog selectedShow={selectedShow} updateShowsRevenue={updateShowsRevenue}
                                  open={showSelectSeatDialog}
                                  onClose={() => setShowSelectSeatDialog(false)}/>

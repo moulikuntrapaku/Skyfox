@@ -8,6 +8,7 @@ const ShowsRevenue = ({showsRevenue,isAdmin}) => {
     const classes = styles();
     console.log(isAdmin);
     // Todo
+    
     return (
         <>
             {
@@ -15,6 +16,7 @@ const ShowsRevenue = ({showsRevenue,isAdmin}) => {
                     ? (
                         <Typography variant="h5" color="secondary" className={classes.showsRevenueContainer}>
                         Revenue: {`${INR_SYMBOL}${showsRevenue}`}
+                        
                         </Typography>
                     )
                     : (
