@@ -14,8 +14,6 @@ fileignoreconfig:
   checksum: e84e390804767a3b8e1c149fb8024c02bbcf2449b0a90f03328cd013600224d8
 - filename: src/components/header/Header.js
   checksum: fcc05d16cfa783cf6d5f0ba52d03610db4022be158b150bcf909ad925de76a6a
-- filename: src/components/Profile/services/passwordChangeFormService.js
-  checksum: bd567c7e649228c777d29fa19671d543bf28807f684e36aff36fa7b2c0ce2481
 - filename: src/components/signup/services/signupFormService.js
   checksum: f12c6142f217e0da7104be08a4836588630d65f485131f0b2e715e5e0421535e
 - filename: src/components/signup/Signup.js
