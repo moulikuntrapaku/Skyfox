@@ -59,7 +59,7 @@ export default ({location, history}) => {
                 <Typography variant="h4" className={classes.showsHeader}>
                     Shows ({showsDate.format(HEADER_DATE_FORMAT)})
                 </Typography>
-                <ScheduleShow showsDate={showsDate} isAdmin={isAdmin} shows={shows}></ScheduleShow>
+                {/* <ScheduleShow showsDate={showsDate} isAdmin={isAdmin} shows={shows}></ScheduleShow> */}
                 <ShowsRevenue showsRevenue={showsRevenue} isAdmin={isAdmin}/>
             </div>
             <List className={classes.listRoot}>

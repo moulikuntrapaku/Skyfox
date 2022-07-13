@@ -1,5 +1,4 @@
-import {object, string, ref} from "yup";
-
+import {object, string} from "yup";
 
 export const initialValues = {
     oldPassword: '', 
@@ -12,11 +11,15 @@ export const formSchema = object({
     newPassword: string("new password")
         .matches(/(?=.*?[A-Z])/,"Password should contain atleast one Uppercase")
         .matches(/(?=.*?[0-9])/,"Password should contain atleast one digit")
-        .matches(/(?=.*?[#?!@$%^&*])/,"Password should contain atleast one special character")
-        .matches( /^\S*$/,"No Whitespace allowed")
+        .matches(/(?=.*?[#?!@$%^&*-])/,"Password should contain atleast one special character")
         .matches(/^.{8,64}$/,"Password should be of minimum 8 characters and maximum 64 characters")
         .required("Password is required"),
     confirmPassword: string("confirm password")
         .required("Confirm Password is required")
-        .oneOf([ref("newPassword"),null],'ConfirmPassword doesnt match with Password'),
 });
+export const validateConfirmPassword = values => {
+    if (values.confirmPassword!=="" && values.newPassword!==values.confirmPassword) {
+      return 'Current Password doesnt match with Password';
+    }
+return null;
+};

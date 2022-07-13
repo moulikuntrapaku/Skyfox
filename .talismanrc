@@ -24,4 +24,5 @@ fileignoreconfig:
   checksum: 0982404f6953b67ed6864bcbb8fe1bf7b5416b8833afc5ad5ab709542340b476
 - filename: src/helpers/authService.js
   checksum: 2d23114fed93d324939b1a62c7aa445e7f367cc9720dabfef266e4571f47819f
-  
+- filename: src/components/Profile/services/passwordChangeFormService.js
+  checksum: b3128875bb8adb5e3c7113d08823c760c87de10d82c28337bd4ab2f7dd8a601a
