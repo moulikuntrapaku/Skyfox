@@ -31,7 +31,6 @@ import useProfile from "./hooks/useProfile";
   const [data,setData]=useState({});
 
 
-
    return (
   <>
     <div className={classes.profileContainer}>

@@ -7,7 +7,7 @@ import styles from "./styles/headerStyles";
 import PropTypes from "prop-types";
 import profile from "../Profile/hooks/useProfile";
 import { getUsername } from "../../helpers/authService";
- 
+import { featureToggles } from "../../config/env-config";
 const Header = ({ onLogout, isAuthenticated}) => {
    const classes = styles();
    const username=getUsername();
@@ -26,6 +26,8 @@ const Header = ({ onLogout, isAuthenticated}) => {
  
    const profileSection = () => {
        if (isAuthenticated) {
+        if(featureToggles.profileView)
+        {
            return (
                <div id="profileSection" className={classes.logoutLink}>
  
@@ -44,6 +46,7 @@ const Header = ({ onLogout, isAuthenticated}) => {
                </div>
            );
        }
+    }
    };
  
  

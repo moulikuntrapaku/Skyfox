@@ -53,5 +53,5 @@ export const urls = {
 };
 
 export const featureToggles = {
-    dummy: true
+    profileView: true
 };
