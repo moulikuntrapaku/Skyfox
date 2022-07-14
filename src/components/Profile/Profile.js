@@ -4,7 +4,7 @@ import styles from "./styles/profileStyles";
 import { Formik,Form } from "formik";
 import {FormikTextField} from "../formik";
 import { getUsername } from "../../helpers/authService";
-import { formSchema, initialValues} from "./services/passwordChangeFormService";
+import { formSchema,initialValues} from "./services/passwordChangeFormService";
 import useChangePassword from "./hooks/useChangePassword";
 import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";

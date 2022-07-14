@@ -3,7 +3,7 @@ fileignoreconfig:
   checksum: fbf08d3f2f76031ac28ca5cb7c65294ba0d4de6c07d9f248f69e9dc9a417b69f
   ignore_detectors: [filename]
 - filename: yarn.lock
-  checksum: 683871ada4f2b064b69877e5b51f07c036ca4ba135ff79b03c1885980d255bd1
+  checksum: 2944e4fdd5760d550f131aa2997c730ec193a9c844a21d4f5620f4e55336a5e6
 - filename: src/components/layout/hooks/useAuth.js
   checksum: 7e56b42c8f723a9fcd01ce82e2ddca778a4054e8ff363ef050a018b078cd91e7
 - filename: src/components/Profile/Profile.js
@@ -23,4 +23,4 @@ fileignoreconfig:
 - filename: src/helpers/authService.js
   checksum: 2d23114fed93d324939b1a62c7aa445e7f367cc9720dabfef266e4571f47819f
 - filename: src/components/Profile/services/passwordChangeFormService.js
-  checksum: b3128875bb8adb5e3c7113d08823c760c87de10d82c28337bd4ab2f7dd8a601a
+  checksum: a1a1ae71af97ba93611d2296ef30da59b48b483558fca532093502c5ab6d699b
